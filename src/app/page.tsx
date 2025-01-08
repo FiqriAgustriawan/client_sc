@@ -1,11 +1,14 @@
 import React from 'react'
+import LoginPage from './loginpage/page'
+import LoginPage2 from './loginpage2/page'
 
 function page() {
   return (
-    <div>
-      testing
-    </div>
+    <>
+      <LoginPage/>
+      <LoginPage2/>
+    </>
   )
 }
 
-export default page
+export default page 
