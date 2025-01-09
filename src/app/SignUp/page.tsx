@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 
-export default function LoginPage() {
+export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false)
 
   return (

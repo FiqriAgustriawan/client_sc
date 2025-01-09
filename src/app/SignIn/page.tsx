@@ -11,11 +11,11 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-[400px] p-8 bg-white rounded-3xl shadow-lg">
-        <div className="space-y-6">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8" style={{ backgroundImage: "url('/c:\Users\lenovo\Downloads\download (6).jpeg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="w-full max-w-[400px] p-6 sm:p-8 bg-white rounded-3xl shadow-lg">
+        <div className="space-y-4 sm:space-y-6">
           <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-semibold tracking-tight">
               Sign in to Summitcees
             </h1>
           </div>
@@ -42,7 +42,7 @@ export default function LoginPage() {
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
               <div className="flex items-center space-x-2">
                 <Checkbox id="remember" className='rounded-full' />
                 <Label htmlFor="remember" className="text-sm">
@@ -81,4 +81,3 @@ export default function LoginPage() {
     </div>
   )
 }
-
