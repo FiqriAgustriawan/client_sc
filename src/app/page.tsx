@@ -1,11 +1,12 @@
-import React from 'react'
+import HeroSection from '../components/HeroSection'
+import StatsSection from '../components/StatsSection'
 
-function page() {
+export default function Home() {
   return (
-    <div>
-      testing
-    </div>
+    <>
+      <HeroSection />
+      <StatsSection />
+    </>
   )
 }
 
-export default page
