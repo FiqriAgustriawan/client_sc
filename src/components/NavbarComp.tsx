@@ -35,7 +35,7 @@ export default function NavBar() {
                 <span className="text-xl font-semibold">SummitCess</span>
               </Link>
               <div className="hidden md:flex space-x-6">
-                <Link href="/" className="text-black hover:text-gray-600">Home</Link>
+                <Link href="/" className="text-black hover:text-gray-600 ">Home</Link>
                 <Link href="/mountain" className="text-black hover:text-gray-600">Mountain</Link>
                 <Link href="/blog" className="text-black hover:text-gray-600">Blog</Link>
               </div>
