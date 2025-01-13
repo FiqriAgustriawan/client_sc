@@ -9,7 +9,6 @@ import WhatwOffer from '@/components/WhatwOffer'
 export default function Home() {
   return (
     <>
-
       <HeroSection />
       <AboutUs/>
       <StatsSection />
