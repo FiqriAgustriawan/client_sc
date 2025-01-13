@@ -6,13 +6,31 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
+import Image from 'next/image'
+import bglogin from '@/assets/images/bglogin.jpeg'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8" style={{ backgroundImage: "url('/Users/lenovo/Downloads/download (6).jpeg')", backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div className="w-full max-w-[400px] p-6 sm:p-8 bg-white rounded-3xl shadow-lg">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 px-4 sm:px-6 lg:px-8" 
+         style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="relative w-full h-full">
+          <Image
+            src={bglogin}
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+            priority
+            className="absolute inset-0 object-cover"
+          />
+
+          <div className="absolute inset-0 bg-black bg-opacity-5 backdrop-blur-sm" />
+        </div>
+      </div>
+
+      <div className="w-full max-w-[400px] p-6 sm:p-8 bg-white rounded-3xl shadow-lg z-10 relative">
         <div className="space-y-4 sm:space-y-6">
           <div className="space-y-2 text-center">
             <h1 className="text-xl sm:text-2xl font-semibold tracking-tight">
@@ -69,7 +87,7 @@ export default function LoginPage() {
           <div className="text-center text-sm">
             {"Don't have an account? "}
             <Link 
-              href="/sign-up" 
+              href="/SignUp" 
               className="text-blue-500 hover:text-blue-600"
             >
               Sign Up
