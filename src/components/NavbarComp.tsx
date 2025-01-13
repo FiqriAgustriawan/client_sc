@@ -20,12 +20,33 @@ export default function NavBar() {
   }, []);
 
   return (
+
     <div className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-10 w-[98%] max-w-[1440px] transition-all duration-300 ${isScrolled ? '-top-3' : 'top-6'}`}>
       <div className="flex items-center justify-between w-full">
         {/* logo */}
         <Link href="/" className="flex items-center z-10 ml-7"> 
           <Image src={Icon} alt="Logo" width={28} height={28} />
         </Link>
+
+    <nav
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-10 transition-transform duration-300 w-[98%] max-w-[1440px] ${
+        !isScrollingUp ? "-translate-y-full" : ""
+      }`}
+    >
+      <div className="bg-[#ffffff] bg-opacity-90 shadow-md rounded-full w-full px-6 sm:px-10 md:px-16 lg:px-20">
+        <div className="container mx-auto py-0.1">
+          <div className="flex items-center justify-between gap-6">
+            {/* Logo on the left */}
+            <div className="flex items-center space-x-8 mr-4">
+              <Link
+                href="/"
+                className="flex items-center gap-3 space-x-2 text-black"
+              >
+                <Image src={Icon} alt="Logo" width={28} height={28} />
+                
+              </Link>
+
+            </div>
 
         {/* navbar */}
         <nav className="absolute inset-x-0">
