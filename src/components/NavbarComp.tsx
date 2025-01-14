@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
 import ProfileUser from "@/assets/svgs/ProfileUser.svg";
 import Icon from "@/assets/svgs/LogoProduct.svg";
 
@@ -39,7 +38,6 @@ export default function NavBar() {
 
             {/* Search input */}
             <div className="relative max-w-xs w-full">
-           
               <input
                 type="search"
                 placeholder="Search"
