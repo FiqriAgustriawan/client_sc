@@ -4,17 +4,14 @@ import StatsSection from '../components/StatsSection'
 import AboutUs from '../components/AboutUs'
 import Adventages from '@/components/Adventages'
 import WhatwOffer from '@/components/WhatwOffer'
+import News from './news/page'
+
 
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <AboutUs/>
-      <StatsSection />
-      <Adventages/>
-      <WhatwOffer/>
-
+    <News/>
     </>
   )
 }

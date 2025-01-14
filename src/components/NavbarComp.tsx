@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Search } from 'lucide-react';
 import ProfileUser from "@/assets/svgs/ProfileUser.svg";
 import Icon from "@/assets/svgs/LogoProduct.svg";
 
@@ -39,7 +38,7 @@ export default function NavBar() {
 
             {/* Search input */}
             <div className="relative max-w-xs w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            
               <input
                 type="search"
                 placeholder="Search"
