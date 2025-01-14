@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/NavbarComp";
 
+
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
@@ -13,13 +14,20 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "SummitCess - Mountain Adventures",
   description: "Explore mountain peaks and find yourself with SummitCess",
+  icons: [
+    {
+      rel: 'icon',
+      url: '/LogoProduct.svg', // Menggunakan file dari folder public
+      type: 'image/svg+xml',
+    },
+  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className={poppins.variable}>
       <body className="font-poppins antialiased bg-[#f5f5f5]">
