@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
+// import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import Image from 'next/image'
 import bglogin from '@/assets/images/bglogin.jpeg'
@@ -62,7 +62,7 @@ export default function LoginPage() {
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
               <div className="flex items-center space-x-2">
-                <Checkbox id="remember" className='rounded-full' />
+                {/* <Checkbox id="remember" className='rounded-full' /> */}
                 <Label htmlFor="remember" className="text-sm">
                   Remember Me
                 </Label>

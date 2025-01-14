@@ -38,11 +38,10 @@ export default function NavBar() {
 
             {/* Search input */}
             <div className="relative max-w-xs w-full">
-            
               <input
                 type="search"
                 placeholder="Search"
-                className="w-72 focus:w-80 transition-all duration-300 ease-out bg-[#F3F3F3] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
+                className="w-72 focus:w-80 focus:-ml-4 transition-all duration-300 ease-out bg-[#F3F3F3] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
               />
             </div>
 
