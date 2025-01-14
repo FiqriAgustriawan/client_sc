@@ -9,17 +9,17 @@ function News() {
     <div className='flex justify-center bg-[#F5F5F5] h-[450px] -mt-10'>
       <div className='grid grid-cols-2 gap-4 mt-10'>
         <div className='relative'>
-          <div className='relative container grid grid-cols-1 mt-24 text-white gap-3'>
+          <div className='relative grid grid-cols-1 mt-24 text-white gap-3'>
             {/* Overlay untuk efek hover */}
             <div className='absolute z-10 w-[576px] h-[284px] bg-gradient-to-t from-black/50 to-transparent hover:bg-black/20 rounded-[20px] transition-all duration-200'>
               <div className='ml-6 mt-[200px] relative'>
-                <div className='flex gap-3 -mt-6 relative'>
+                <div className='flex gap-3 -mt-6 relative font-light7'>
                   <h1>Bulu Baria</h1>
                   <div className='w-[2px] rounded-full h-[14px] mt-[6px] bg-white'/>
                   <h1>14 jam yang lalu</h1>
                 </div>
                 <div>
-                  <h1 className='text-xl font-semibold -mt-3 leading-6 mt-1'>Lorem ipsum odor amet, consectetuer <br/>adipiscing elit.</h1>
+                  <h1 className='text-xl font-semibold -mt-2 leading-6'>Lorem ipsum odor amet, consectetuer <br/>adipiscing elit.</h1>
                 </div>
               </div> 
             </div>
@@ -37,7 +37,7 @@ function News() {
         </div>
         {/* Pembatas */}
         <div className='relative'>
-          <div className='relative container grid grid-cols-1 mt-24 text-white gap-3'>
+          <div className='relative grid grid-cols-1 mt-24 text-white gap-3'>
             {/* Overlay untuk efek hover */}
             <div className='absolute z-50 w-[576px] h-[284px] bg-gradient-to-t from-black/50 to-transparent hover:bg-black/20 rounded-[20px] transition-all duration-200'>
               <div className='ml-6 mt-[200px] relative'>
@@ -47,7 +47,7 @@ function News() {
                   <h1>14 jam yang lalu</h1>
                 </div>
                 <div>
-                  <h1 className='text-xl font-semibold -mt-3 leading-6 mt-1'>Lorem ipsum odor amet, consectetuer <br/>adipiscing elit.</h1>
+                  <h1 className='text-xl font-semibold -mt-2 leading-6'>Lorem ipsum odor amet, consectetuer <br/>adipiscing elit.</h1>
                 </div>
               </div> 
             </div>
