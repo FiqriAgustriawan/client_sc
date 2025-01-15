@@ -9,9 +9,12 @@ import News2 from '@/components/News2'
 import Story from '@/components/Story'
 
 
+
+
 export default function Home() {
   return (
     <>
+
       <HeroSection />
       <AboutUs/>
       <StatsSection />
@@ -20,6 +23,7 @@ export default function Home() {
       <ExploreMount/>
       <News2/>
       <Story/>
+
 
     </>
   )
