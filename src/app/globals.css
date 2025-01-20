@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 
+
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(1);
+    opacity: 1;
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+  
+
+
 :root {
   --foreground-rgb: 51, 51, 51;
   --background-start-rgb: 245, 245, 245;
@@ -44,3 +64,4 @@ a:hover {
 body {
   font-family: var(--font-poppins);
 }
+

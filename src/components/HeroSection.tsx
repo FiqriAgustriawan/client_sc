@@ -30,8 +30,10 @@ const HeroImage = () => {
           terlupakan. Siap melangkah lebih dekat ke puncak impian?
         </p>
   
-        <button className="bg-[#2B82FE] text-white text-base px-8 py-3 rounded-full hover:bg-opacity-95 transition duration-300 font-semibold hover:-translate-y-2 hover:shadow-lg hover:shadow-[#2B82FE]">
-          Mulai Petualanganmu!
+        <button type="submit" className="relative py-2 px-7 text-black text-base font-bold rounded-full overflow-hidden bg-white transition-all duration-400 ease-in-out shadow-md hover:scale-105 hover:text-white hover:shadow-lg active:scale-90 before:absolute before:bottom-[-150%] before:left-1/2 before:-translate-x-1/2 before:w-[0] before:h-[0] before:bg-gradient-to-r before:from-blue-500 before:to-blue-300 before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-full hover:before:bottom-0 hover:before:w-10 hover:before:scale-[560%] hover:before:h-[100%] hover:before:rounded-full">
+          <div className="hover:-translate-y-1 transition-all duration-500">
+          Mulai Petualanganmu
+          </div>
         </button>
       </div>
     </div>

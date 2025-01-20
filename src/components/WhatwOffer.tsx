@@ -10,8 +10,8 @@ import bg4 from '@/assets/images/bgWhatwOffer4.png';
 export default function WhatwOffer() {
   return (
     <>
-      <div className="bg-white mt-48 mb-32 px-4 lg:px-7 max-w-full">
-        <div className="container mx-auto max-w-screen-xl">
+      <div className="bg-white mt-48 mb-28 px-4 lg:px-7 max-w-full">
+        <div className="container mx-auto max-w-screen-xl px-4">
           <h2 className="text-left font-bold text-[#1F4068] text-3xl sm:text-5xl lg:text-7xl mb-10 max-w-xl mt-10 lg:mt-32">
             Apa yang kami <br /> tawarkan
           </h2>
@@ -24,11 +24,13 @@ export default function WhatwOffer() {
                 fill
                 className="rounded-3xl object-cover"
               />
+
               <div className="absolute inset-0 bg-black bg-opacity-50 rounded-3xl"></div>
              <div className="absolute inset-5 py-4 mx-1 text-4xl font-medium text-white">
                Paket <br />
                Pendakian
              </div>
+
             </div>
             {/* Card 2 */}
             <div className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl w-full h-80 lg:h-[24rem] transition-all duration-500 ease-in-out">
@@ -38,7 +40,7 @@ export default function WhatwOffer() {
                 fill
                 className="rounded-3xl object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-3xl"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-30 rounded-3xl"></div>
               <div className="absolute inset-5 py-4 mx-1 text-base sm:text-lg lg:text-2xl xl:text-4xl font-medium text-white">
                 Pemandu <br />
                 Profesional
@@ -52,7 +54,7 @@ export default function WhatwOffer() {
                 fill
                 className="rounded-3xl object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-3xl"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-30 rounded-3xl"></div>
               <div className="absolute inset-5 py-4 mx-1 text-base sm:text-lg lg:text-2xl xl:text-4xl font-medium text-white">
                 Update <br />
                 Berita Terkini
@@ -66,7 +68,7 @@ export default function WhatwOffer() {
                 fill
                 className="rounded-3xl object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-3xl"></div>
+              <div className="absolute inset-0 bg-black bg-opacity-30  rounded-3xl"></div>
               <div className="absolute inset-5 py-4 mx-1 text-base sm:text-lg lg:text-2xl xl:text-4xl font-medium text-white">
                 Pendakian <br />
                 Yang Aman
