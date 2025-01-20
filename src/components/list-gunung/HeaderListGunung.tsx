@@ -1,24 +1,25 @@
+
 import React from "react";
-import HeroGunung from "@/assets/images/HeroBackground.png";
+import HeaderGunung from "@/assets/images/ImgBromo.png";
 import Image from "next/image";
 
 const HeaderListGunung = () => {
   return (
     <div>
-      <div className="relative overflow-hidden" style={{ height: "70vh" }}>
+      <div className="relative -top-[16px] overflow-hidden" >
         <Image
-          src={HeroGunung}
+        width={0}
+          src={HeaderGunung}
           alt="Mountain landscape"
-          className="w-full h-full object-cover"
-          fill
-          sizes="(max-width: 1280px) 100vw, 1280px"
-          priority
+          className=" object-cover"
+        
+          
         />
-        <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
-          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold max-w-4xl mx-auto leading-tight text-center mb-6">
-            Jelajahi Puncak,
+        <div className="absolute inset-0 flex flex-col pt-[40px] text-white justify-center items-start px-[20px] md:px-[50px] lg:px-[65px]">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-semibold leading-tight">
+            Pilih Gunung Favorit
             <br />
-            Temukan Dirimu
+            Anda
           </h1>
         </div>
       </div>
