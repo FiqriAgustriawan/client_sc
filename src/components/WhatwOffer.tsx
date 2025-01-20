@@ -17,18 +17,20 @@ export default function WhatwOffer() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
             {/* Card 1 */}
-            <div className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl w-full h-80 lg:h-[24rem] transition-all duration-500 ease-in-out">
+            <div className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl w-full h-80  lg:h-[24rem] transition-all duration-500 ease-in-out">
               <Image
                 src={bg1}
                 alt="Paket Pendakian 1"
                 fill
                 className="rounded-3xl object-cover"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-30 rounded-3xl"></div>
-              <div className="absolute inset-5 py-4 mx-1 text-base sm:text-lg lg:text-2xl xl:text-4xl font-medium text-white">
-                Paket <br />
-                Pendakian
-              </div>
+
+              <div className="absolute inset-0 bg-black bg-opacity-50 rounded-3xl"></div>
+             <div className="absolute inset-5 py-4 mx-1 text-4xl font-medium text-white">
+               Paket <br />
+               Pendakian
+             </div>
+
             </div>
             {/* Card 2 */}
             <div className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl w-full h-80 lg:h-[24rem] transition-all duration-500 ease-in-out">
@@ -71,7 +73,7 @@ export default function WhatwOffer() {
                 Pendakian <br />
                 Yang Aman
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       </div>
