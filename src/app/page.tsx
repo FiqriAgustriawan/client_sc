@@ -4,7 +4,7 @@ import StatsSection from '../components/StatsSection'
 import AboutUs from '../components/AboutUs'
 import Adventages from '@/components/Adventages'
 import WhatwOffer from '@/components/WhatwOffer'
-import { LaciTanya } from '@/components/LaciTanya'
+// import { LaciTanya } from '@/components/LaciTanya'
 import ExploreMount from '@/components/ExploreMount'
 import News2 from '@/components/News2'
 import Story from '@/components/Story'
@@ -19,7 +19,7 @@ export default function Home() {
       <AboutUs />
       <Adventages />
       <WhatwOffer />
-      <LaciTanya />
+    
     </>
   )
 }
