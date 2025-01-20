@@ -46,10 +46,13 @@ export default function NavBar() {
               <input
                 type="search"
                 placeholder="Search"
+
                 className="w-72 bg-[#ffffff] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
+
               />
             </div>
           </div>
+
 
           {/* Logo for desktop */}
           <Link href="/" className="items-center z-10 ml-[1.75rem] hidden md:block">
@@ -60,7 +63,6 @@ export default function NavBar() {
               height={28}
             />
           </Link>
-
           {/* Hamburger menu for mobile */}
           <div className="md:hidden z-10 mr-[1.75rem]">
             <button
@@ -83,7 +85,6 @@ export default function NavBar() {
               </svg>
             </button>
           </div>
-
           {/* Dropdown menu for mobile */}
           <div
             className={`${
@@ -106,7 +107,6 @@ export default function NavBar() {
               Dashboard
             </Link>
           </div>
-
           {/* Navbar for desktop */}
           <nav className="hidden md:block absolute inset-x-0">
             <div className="bg-[#ffffff] bg-opacity-90 shadow-md rounded-full w-full px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem]">
@@ -149,6 +149,7 @@ export default function NavBar() {
           </nav>
 
           {/* Profile user for desktop */}
+
           <div className="hidden md:flex items-center z-10 mr-[1.75rem]">
             <div className="w-[2.5rem] h-[2.5rem] rounded-full overflow-hidden border-[0.125rem] border-gray-300">
               <Image
@@ -156,7 +157,7 @@ export default function NavBar() {
                 alt="Profile"
                 width={40}
                 height={40}
-                className="w-full h-full object-cover bg-yellow-200"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
