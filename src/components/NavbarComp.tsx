@@ -25,7 +25,6 @@ export default function NavBar() {
   }, []);
 
   return (
-
     <>
       <div
         className={`fixed left-1/2 transform -translate-x-1/2 z-10 w-[100%] max-w-[88rem] transition-all duration-300 ${
@@ -47,47 +46,67 @@ export default function NavBar() {
                 type="search"
                 placeholder="Search"
                 className="w-72 bg-[#F3F3F3] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
-                
-    <nav className={`fixed left-1/2 transform -translate-x-1/2 z-10 w-[98%] max-w-[1440px] transition-all duration-300 ${isScrolled ? 'top-3' : 'top-6'}`}>
-      <div className="bg-white  shadow-md rounded-full w-full px-8 sm:px-12 md:px-20 lg:px-24">
-        <div className="container mx-auto py-2">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center z-10">
-              <Image src={Icon} alt="Logo" width={28} height={28} />
-            </Link>
-
-            {/* Navigation links */}
-            <div className="hidden md:flex gap-x-[55px]">
-              <Link href="/" className="text-gray-800 hover:text-gray-600 font-normal">Home</Link>
-              <Link href="/mountain" className="text-gray-800 hover:text-gray-600 font-normal">Gunung</Link>
-              <Link href="/blog" className="text-gray-800 hover:text-gray-600 font-normal">Blog</Link>
-              <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-normal">Contact</Link>
-            </div>
-
-            {/* Search input */}
-            <div className="relative max-w-xs w-full">
-              <input
-                type="search"
-                placeholder="Search"
-                className="w-72 focus:w-80 focus:-ml-4 transition-all duration-300 ease-out bg-[#F3F3F3] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
-
               />
             </div>
           </div>
 
-          {/* Logo untuk desktop */}
-          <Link
-            href="/"
-            className="items-center z-10 ml-[1.75rem] hidden md:block"
-          >
-            <Image
-              src={Icon || "/placeholder.svg"}
-              alt="Logo"
-              width={28}
-              height={28}
-            />
-          </Link>
+          {/* Navigation untuk desktop */}
+          <nav className="hidden md:block absolute inset-x-0">
+            <div className="bg-[#ffffff] bg-opacity-90 shadow-md rounded-full w-full px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem]">
+              <div className="container mx-auto py-[0.5rem]">
+                <div className="flex items-center justify-between">
+                  {/* Logo untuk desktop */}
+                  <Link href="/" className="flex items-center z-10">
+                    <Image src={Icon} alt="Logo" width={28} height={28} />
+                  </Link>
+
+                  {/* Links untuk desktop */}
+                  <div className="flex gap-x-[3.5rem] ml-[10.5rem]">
+                    <Link
+                      href="/"
+                      className="text-gray-800 hover:text-gray-600 font-normal"
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      href="/mountain"
+                      className="text-gray-800 hover:text-gray-600 font-normal"
+                    >
+                      Gunung
+                    </Link>
+                    <Link
+                      href="/blog"
+                      className="text-gray-800 hover:text-gray-600 font-normal"
+                    >
+                      Blog
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="text-gray-800 hover:text-gray-600 font-normal"
+                    >
+                      Contact
+                    </Link>
+                  </div>
+
+                  {/* Search untuk desktop */}
+                  <div className="relative w-full max-w-[16rem] mr-[12.5rem]">
+                    <Image
+                      src={SearchNav || "/placeholder.svg"}
+                      alt="Search Icon"
+                      width={16}
+                      height={16}
+                      className="absolute top-1/2 left-3 transform -translate-y-1/2 transition-all duration-300 ease-out"
+                    />
+                    <input
+                      type="search"
+                      placeholder="Search"
+                      className="w-72 bg-[#F3F3F3] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
 
           {/* Hamburger menu untuk mobile */}
           <div className="md:hidden z-10 mr-[1.75rem]">
@@ -150,60 +169,7 @@ export default function NavBar() {
             </Link>
           </div>
 
-          {/* Navbar untuk tampilan desktop */}
-          <nav className="hidden md:block absolute inset-x-0">
-            <div className="bg-[#ffffff] bg-opacity-90 shadow-md rounded-full w-full px-[2rem] sm:px-[3rem] md:px-[5rem] lg:px-[6rem]">
-              <div className="container mx-auto py-[0.5rem]">
-                <div className="flex items-center justify-between">
-                  {/* Link untuk desktop */}
-                  <div className="flex gap-x-[3.5rem] ml-[10.5rem]">
-                    <Link
-                      href="/"
-                      className="text-gray-800 hover:text-gray-600 font-normal"
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      href="/mountain"
-                      className="text-gray-800 hover:text-gray-600 font-normal"
-                    >
-                      Gunung
-                    </Link>
-                    <Link
-                      href="/blog"
-                      className="text-gray-800 hover:text-gray-600 font-normal"
-                    >
-                      Blog
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="text-gray-800 hover:text-gray-600 font-normal"
-                    >
-                      Contact
-                    </Link>
-                  </div>
-
-                  {/* Search input untuk desktop */}
-                  <div className="relative w-full max-w-[16rem] mr-[12.5rem]">
-                    <Image
-                      src={SearchNav || "/placeholder.svg"}
-                      alt="Search Icon"
-                      width={16}
-                      height={16}
-                      className="absolute top-1/2 left-3 transform -translate-y-1/2 transition-all duration-300 ease-out"
-                    />
-                    <input
-                      type="search"
-                      placeholder="Search"
-                      className="w-72 bg-[#F3F3F3] rounded-full py-2.5 pl-10 pr-4 text-xs focus:bg-[#E9E9E9]"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-
-          {/* Profile user untuk desktop */}
+          {/* Profile untuk desktop */}
           <div className="hidden md:flex items-center z-10 mr-[1.75rem]">
             <div className="w-[2.5rem] h-[2.5rem] rounded-full overflow-hidden border-[0.125rem] border-gray-300">
               <Image
@@ -211,7 +177,7 @@ export default function NavBar() {
                 alt="Profile"
                 width={40}
                 height={40}
-                className="w-full h-full object-cover bg-yellow-200"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
