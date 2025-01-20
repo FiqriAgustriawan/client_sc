@@ -12,12 +12,12 @@ function Advantages() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-center text-center mt-36">
-            <h4 className="font-bold leading-10 text-primary text-4xl md:text-5xl mb-16 text-[#1F4068]">
+            <h4 className="font-bold leading-10  text-4xl md:text-5xl mb-16 text-dark">
               Keunggulan<br />Kami
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {/* Card 1 */}
-              <div className="relative backdrop-blur-md w-full sm:w-60 h-36">
+              <div className="relative backdrop-blur-md  w-60 h-36">
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                   <Image src={LogoInformasi} alt="Logo" width={39} height={39} />
                   <h2 className="text-base md:text-xl font-semibold leading-5 text-black mt-4">
