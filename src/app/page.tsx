@@ -1,12 +1,15 @@
-import React from "react";
-import HeroSection from "../components/HeroSection";
-import StatsSection from "../components/StatsSection";
-import AboutUs from "../components/AboutUs";
-import Adventages from "@/components/Adventages";
-import WhatwOffer from "@/components/WhatwOffer";
-import ExploreMount from "@/components/ExploreMount";
-import News2 from "@/components/News2";
-import Story from "@/components/Story";
+
+import React from 'react'
+import HeroSection from '../components/HeroSection'
+import StatsSection from '../components/StatsSection'
+import AboutUs from '../components/AboutUs'
+import Adventages from '@/components/Adventages'
+import WhatwOffer from '@/components/WhatwOffer'
+import { LaciTanya } from '@/components/LaciTanya'
+import ExploreMount from '@/components/ExploreMount'
+import News2 from '@/components/News2'
+
+
 
 export default function Home() {
   return (
@@ -16,6 +19,10 @@ export default function Home() {
       <AboutUs />
       <Adventages />
       <WhatwOffer />
+      <ExploreMount />
+      <LaciTanya />  
+      <News2 />
+
     </>
   );
 }
