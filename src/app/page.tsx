@@ -10,16 +10,24 @@ import Story from '@/components/Story'
 import ReadytoChallenge from '@/components/ReadytoChallenge'
 
 
+
+
 export default function Home() {
   return (
     <>
+
       <HeroSection />
       <Adventages/>
       <WhatwOffer/>
       <ExploreMount/>
       <News2/>
       <Story/>
+<<<<<<< HEAD
       <ReadytoChallenge/>
+=======
+
+
+>>>>>>> c3fc73f6c6bc1a96eff6ec6bad60b66463d306b1
     </>
   )
 }

@@ -1,0 +1,115 @@
+[
+    {
+      "id": 1,
+      "judul_berita": "Peningkatan Aktivitas Vulkanik di Kawah Utama",
+      "nama_gunung": "Gunung Merapi",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "2 jam yang lalu"
+    },
+    {
+      "id": 2,
+      "judul_berita": "Status Siaga: Asap Vulkanik Membumbung Tinggi",
+      "nama_gunung": "Gunung Semeru",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "3 jam yang lalu"
+    },
+    {
+      "id": 3,
+      "judul_berita": "Evakuasi Warga: Aktivitas Gunung Meningkat",
+      "nama_gunung": "Gunung Sinabung",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "4 jam yang lalu"
+    },
+    {
+      "id": 4,
+      "judul_berita": "Pemantauan Intensif: Getaran Magmatis Terdeteksi",
+      "nama_gunung": "Gunung Rinjani",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "5 jam yang lalu"
+    },
+    {
+      "id": 5,
+      "judul_berita": "Peringatan Dini: Potensi Letusan Freatik",
+      "nama_gunung": "Gunung Bromo",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "6 jam yang lalu"
+    },
+    {
+      "id": 6,
+      "judul_berita": "Update Status: Aktivitas Seismik Meningkat",
+      "nama_gunung": "Gunung Kelud",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "7 jam yang lalu"
+    },
+    {
+      "id": 7,
+      "judul_berita": "Laporan Terkini: Deformasi Tubuh Gunung",
+      "nama_gunung": "Gunung Agung",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "8 jam yang lalu"
+    },
+    {
+      "id": 8,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 9,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 10,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 11,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 12,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 13,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 14,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 15,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    },
+    {
+      "id": 16,
+      "judul_berita": "Waspada: Peningkatan Suhu Kawah",
+      "nama_gunung": "Gunung Slamet",
+      "gambar": "/assets/images/News.png",
+      "timestamp": "9 jam yang lalu"
+    }
+  ]
+  
