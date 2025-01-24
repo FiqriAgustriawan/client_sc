@@ -8,6 +8,10 @@ import WhatwOffer from '@/components/WhatwOffer'
 import { LaciTanya } from '@/components/LaciTanya'
 import ExploreMount from '@/components/ExploreMount'
 import News2 from '@/components/News2'
+import Story from '@/components/Story'
+import ReadytoChallenge from '@/components/ReadytoChallenge'
+
+
 
 
 
@@ -15,14 +19,12 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <StatsSection />
-      <AboutUs />
-      <Adventages />
-      <WhatwOffer />
-      <ExploreMount />
-      <LaciTanya />  
-      <News2 />
-
+      <Adventages/>
+      <WhatwOffer/>
+      <ExploreMount/>
+      <News2/>
+      <Story/>
+      <ReadytoChallenge/>
     </>
   );
 }
