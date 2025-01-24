@@ -7,20 +7,19 @@ import WhatwOffer from '@/components/WhatwOffer'
 import ExploreMount from '@/components/ExploreMount'
 import News2 from '@/components/News2'
 import Story from '@/components/Story'
+import ReadytoChallenge from '@/components/ReadytoChallenge'
 
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <AboutUs/>
-      <StatsSection />
       <Adventages/>
       <WhatwOffer/>
       <ExploreMount/>
       <News2/>
       <Story/>
-
+      <ReadytoChallenge/>
     </>
   )
 }

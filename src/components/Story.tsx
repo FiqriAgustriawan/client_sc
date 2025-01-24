@@ -1,148 +1,115 @@
 'use client'
 
-import React from "react";
-import Image from "next/image";
-import Fp from '@/assets/images/Profile.png';
-import arrowwhite from '@/assets/svgs/Arrow2.svg'
+import React from 'react';
+import Image from 'next/image';
+import arrow from '@/assets/svgs/Arrow2.svg';
+import { Input } from './ui/input';
+import profile from '@/assets/images/Profile.png'
 
 
-const Story = () => {
+
+function Story(){
   return (
-    <div className="mx-auto px-4 pt-[100px]">
-    <div
-      className="min-h-screen bg-gradient-to-b from-[#4A93E8] to-[#CCE3FF] rounded-[60px] px-4 py-16 mb-32"
-      style={{ height: "125vh" }}
-    >
-      <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white">
-    </div>
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold max-w-4xl mx-auto leading-tight text-center mb-32 py-14 text-slate-900">
-          Cerita Pendaki
-        <p className="relative text-base md:text-lg lg:text-2xl font-normal max-w-4xl mx-auto leading-tight text-center mb-10 text-slate-800">
-          Pengalaman Nyata Di Puncak Sulawesi Selatan
-        </p>
-        </h1>
-        <div className="bg-white rounded-full w-32 h-9 -mt-[400px] mx-[530px]">
-        <h1 className="text-center py-1 font-semibold">Testimoni</h1>
+    <>
+    <div className='bg-white xl:h-[700px] mb-28 h-[1300px]'>
+    <div className="bg-gradient-to-t from-[#D7E9FF] to-[#4A93E8] py-12 rounded-3xl mb-32 mx-5 xl:h-[770px] h-[1400px]">
+      <div className="container px-4">
+        <div className="flex flex-wrap justify-center gap-3 my-40">
+            <div className='absolute -my-28'>
+                <p className='absolute -my-14 py-0.5 font-semibold text-md text-center xl:mx-40 mx-[130px] h-8 bg-white rounded-full w-32'>Testimoni</p>
+                <h1 className='text-center xl:text-6xl font-bold text-4xl'>Cerita Pendaki</h1>
+                <p className='font-normal xl:text-xl xl:tracking-wider tracking-wider text-lg leading-9 text-center mb-6'>Pengalaman Nyata Di Puncak Sulawesi Selatan</p>
+            </div>
+ 
+          {/* Card kiri atas */}
+          <div className="text-left bg-white rounded-3xl md:w-96 w-72 h-36 mt-7 xl:px-4 px-4 transition-all duration-500 ease-in-out xl:w-80 xl:h-40 xl:-ml-6 lg:w-[400px] xl:-mx-9 lg:gap-5 xl:mt-7">
+            <Image alt='profil' src={profile} className='rounded-full xl:w-10 xl:mt-4 xl:ml-1 w-10 mt-4 ml-1'/>
+            <h1 className='xl:ml-14 xl:-mt-10 font-semibold xl:text-sm text-lg mx-14 -mt-11'>
+              Bang Fiqri
+            </h1>
+            <h2 className='xl:text-xs text-xs xl:ml-14 mx-14 text-gray-600'>
+              @fiqriagustriawan2025
+            </h2>
+            <p className='font-semibold xl:text-xs xl:ml-12 xl:mt-7 mx-3 mt-4 text-sm'>Wow keren sekali saya jadi lebih <br/> mudah untuk mendaki gunung</p>
+            <h1 className='xl:text-5xl font-serif xl:pl-6 xl:-mt-24 mx-56 -mt-24 text-4xl'>''</h1>
+          </div>
 
-        {/* card 1 */}
-        <div className="grid grid-cols-2 gap-80 mt-20">
-          <div className="-mt-20 ml-4">
-          <div className="bg-white rounded-3xl w-72 h-36 mt-48 -m-[405px]">
-            <div className="px-4 py-4 h-3">
-            <Image src={Fp} alt="profile" className="rounded-full w-10 h-10">
-            </Image>
-            </div>
-            <div className="py-12">
-              <h1 className="px-16 mx-1 -my-16 font-semibold text-md">Fiqri Cool</h1>
-              <h1 className="px-16 mx-1 pt-[62px]  font-normal text-xs">@bangfiqriii_</h1>
-            </div>
-            <div>
-              <h1 className="font-bold text-4xl font-serif px-60 -my-28">''</h1>
-            </div>
-            <p className="text-xs font-medium px-16 py-32">Wow keren sekali saya jadi lebih mudah untuk mendaki gunung.</p>
+          {/* Card Tengah atas */}
+          <div className="text-left bg-white rounded-3xl w-72 md:w-96 h-52 px-4 transition-all duration-500 ease-in-out xl:w-80 xl:h-48 xl:ml-12 lg:w-[400px] xl:mt-7 xl:mr-1 lg:gap-5">
+          <Image alt='profil' src={profile} className='rounded-full w-10 mt-4 ml-1'/>
+            <h1 className='xl:ml-14 xl:-mt-10 font-semibold xl:text-sm text-lg mx-14 -mt-11'>
+              Akram Ngantuk
+            </h1>
+            <h2 className='text-xs xl:ml-14 text-gray-600 mx-14'>
+              @muhammadakram24
+            </h2>
+            <p className='font-semibold xl:text-xs xl:ml-7 xl:mt-5 text-sm pt-5 px-2'>Sebagai pemula, saya sangat terkesan <br/> dengan perjalanan ke Gunung Latimojong. Rute yang menantang tapi aman, berkat panduan yang detail dari website ini.</p>
+            <h1 className='xl:text-5xl font-serif xl:pl-6 xl:-mt-[140px] mx-56 -mt-40 text-4xl'>''</h1>
           </div>
-          {/* card 2 */}
-          <div className="bg-white rounded-3xl w-72 h-36 mt-[420px] -m-[405px]">
-            <div className="px-4 py-4 h-3">
-            <Image src={Fp} alt="profile" className="rounded-full w-10 h-10">
-            </Image>
-            </div>
-            <div className="py-12">
-              <h1 className="px-16 mx-1 -my-16 font-semibold text-md">Akram Cuek</h1>
-              <h1 className="px-16 mx-1 pt-[62px]  font-normal text-xs">@mister_arm_01</h1>
-            </div>
-            <div>
-              <h1 className="font-bold text-4xl font-serif px-60 -my-28">''</h1>
-            </div>
-            <p className="text-xs font-medium px-16 py-32">Wow keren sekali saya jadi lebih mudah untuk mendaki gunung.</p>
+
+          {/* Card kanan atas */}
+          <div className="text-left bg-white rounded-3xl md:w-96 w-72 h-36 xl:px-4 px-4 transition-all duration-500 ease-in-out xl:w-80 xl:h-40 xl:ml-2 lg:w-[400px] xl:-mx-9 lg:gap-5 xl:mt-7">
+          <Image alt='profil' src={profile} className='rounded-full w-10 mt-4 ml-1'/>
+            <h1 className='xl:ml-14 xl:-mt-10 font-semibold xl:text-sm text-lg mx-14 -mt-11'>
+              Faras Pria Mahal
+            </h1>
+            <h2 className='xl:text-xs text-xs xl:ml-14 mx-14 text-gray-600'>
+              @adisalfarastzees
+            </h2>
+            <p className='font-semibold xl:text-xs xl:ml-12 xl:mt-7 mx-3 mt-4 text-sm'>Wow keren sekali saya jadi lebih <br/> mudah untuk mendaki gunung</p>
+            <h1 className='xl:text-5xl font-serif xl:pl-6 xl:-mt-24 mx-56 -mt-24 text-4xl '>''</h1>
           </div>
+
+          {/* Card Kiri bawah */}
+          <div className="text-left bg-white rounded-3xl w-72 md:w-96 h-36 px-4 transition-all duration-500 ease-in-out xl:h-40 xl:w-80 xl:-mt-8 xl:ml-12 lg:w-[400px] xl:-mx-9 lg:gap-5">
+          <Image alt='profil' src={profile} className='rounded-full w-10 mt-4 ml-1'/>
+            <h1 className='xl:ml-14 xl:-mt-10 font-semibold xl:text-sm text-lg mx-14 -mt-11'>
+              Faqih Tailwind
+            </h1>
+            <h2 className='xl:text-xs text-xs xl:ml-14 mx-14 text-gray-600'>
+              @ijsamagilfaqih
+            </h2>
+            <p className='font-semibold xl:text-xs xl:ml-12 xl:mt-7 mx-3 mt-4 text-sm'>Wow keren sekali saya jadi lebih <br/> mudah untuk mendaki gunung</p>
+            <h1 className='xl:text-5xl font-serif xl:pl-6 xl:-mt-24 mx-56 -mt-24 text-4xl'>''</h1>
           </div>
-          {/* card 3 */}
-          <div className="-mt-[307px]">
-          <div className="bg-white rounded-3xl w-72 h-44 mt-[420px] -m-[405px]">
-            <div className="px-4 py-4 h-3">
-            <Image src={Fp} alt="profile" className="rounded-full w-10 h-10">
-            </Image>
-            </div>
-            <div className="py-12">
-              <h1 className="px-16 mx-1 -my-16 font-semibold text-md">Fadlul Si Ganteng</h1>
-              <h1 className="px-16 mx-1 pt-[62px]  font-normal text-xs">@fadlulhasan2025_</h1>
-            </div>
-            <div>
-              <h1 className="font-bold text-4xl font-serif px-60 -my-28">''</h1>
-            </div>
-            <p className="text-xs font-medium px-10 py-32">Sebagai pemula, saya sangat terkesan dengan perjalanan ke Gunung Latimojong. Rute yang menantang tapi aman, berkat panduan yang detail dari website ini.</p>
+
+          {/* Card Tengah bawah */}
+          <div className="text-left bg-white rounded-3xl w-72 h-52 md:w-96 transition-all duration-500 ease-in-out xl:w-80 xl:ml-12 xl:h-48 xl:mt-1 xl:-mr-9 lg:w-[400px] lg:gap-5">
+          <Image alt='profil' src={profile} className='rounded-full w-10 mt-4 ml-5'/>
+            <h1 className='xl:ml-[71px] xl:-mt-10 font-semibold xl:text-sm text-lg mx-[70px] -mt-11'>
+              Daniel
+            </h1>
+            <h2 className='text-xs xl:ml-[1px] xl:mx-24 px-[70px] text-gray-600'>
+              @danielcaturrangga
+            </h2>
+            <p className='font-semibold xl:text-xs xl:ml-10 xl:mt-5 text-sm pt-5 px-6'>Sebagai pemula, saya sangat terkesan <br/> dengan perjalanan ke Gunung Latimojong. Rute yang menantang tapi aman, berkat panduan yang  detail dari website ini.</p>
+            <h1 className='xl:text-5xl font-serif xl:pl-6 xl:-mt-[155px] mx-60 -mt-40 text-4xl'>''</h1>
           </div>
-          {/* card 4 */}
-          <div className="bg-white rounded-3xl w-72 h-44 mt-[420px] -m-[405px]">
-            <div className="px-4 py-4 h-3">
-            <Image src={Fp} alt="profile" className="rounded-full w-10 h-10">
-            </Image>
-            </div>
-            <div className="py-12">
-              <h1 className="px-16 mx-1 -my-16 font-semibold text-md">Daniel</h1>
-              <h1 className="px-16 mx-1 pt-[62px]  font-normal text-xs">@danielcaturrangga_</h1>
-            </div>
-            <div>
-              <h1 className="font-bold text-4xl font-serif px-60 -my-28">''</h1>
-            </div>
-            <p className="text-xs font-medium px-10 py-32">Sebagai pemula, saya sangat terkesan dengan perjalanan ke Gunung Latimojong. Rute yang menantang tapi aman, berkat panduan yang detail dari website ini.</p>
+
+          {/* Card kanan bawah */}
+          <div className="text-left bg-white rounded-3xl w-72 md:w-96 h-36 px-4 transition-all duration-500 ease-in-out xl:w-80 xl:h-40 xl:-mt-8 xl:ml-12 xl:mr-9 lg:w-[400px] lg:gap-5">
+          <Image alt='profil' src={profile} className='rounded-full w-10 mt-4 ml-1'/>
+            <h1 className='xl:ml-14 xl:-mt-10 font-semibold xl:text-sm text-lg mx-14 -mt-11'>
+              fadlul siganteng
+            </h1>
+            <h2 className='text-xs text-gray-600 px-14'>
+              @fadlulhasan2025
+            </h2>
+            <p className='font-semibold xl:text-xs xl:ml-12 xl:mt-7 mx-3 mt-4 text-sm'>Wow keren sekali saya jadi lebih <br/> mudah untuk mendaki gunung</p>
+            <h1 className='xl:text-5xl font-serif xl:pl-6 xl:-mt-24 mx-56 -mt-24 text-4xl'>''</h1>
           </div>
-          </div>
-          {/* card 5 */}
-          <div>
-            
-          </div>
-          <div className="-mt-[472px] ml-[305px]">
-          <div className="bg-white rounded-3xl w-72 h-36 mt-48 -m-[405px]">
-            <div className="px-4 py-4 h-3">
-            <Image src={Fp} alt="profile" className="rounded-full w-10 h-10">
-            </Image>
-            </div>
-            <div className="py-12">
-              <h1 className="px-16 mx-1 -my-16 font-semibold text-md">Faras Pria Mahal</h1>
-              <h1 className="px-16 mx-1 pt-[62px]  font-normal text-xs">@adslfarass_</h1>
-            </div>
-            <div>
-              <h1 className="font-bold text-4xl font-serif px-60 -my-28">''</h1>
-            </div>
-            <p className="text-xs font-medium px-16 py-32">Wow keren sekali saya jadi lebih mudah untuk mendaki gunung.</p>
-          </div>
-          {/* card 6 */}
-          <div className="bg-white rounded-3xl w-72 h-36 mt-[420px] -m-[405px]">
-            <div className="px-4 py-4 h-3">
-            <Image src={Fp} alt="profile" className="rounded-full w-10 h-10">
-            </Image>
-            </div>
-            <div className="py-12">
-              <h1 className="px-16 mx-1 -my-16 font-semibold text-md">Agil Faqih </h1>
-              <h1 className="px-16 mx-1 pt-[62px]  font-normal text-xs">@faqihtailwind500_</h1>
-            </div>
-            <div>
-              <h1 className="font-bold text-4xl font-serif px-60 -my-28">''</h1>
-            </div>
-            <p className="text-xs font-medium px-16 py-32">Wow keren sekali saya jadi lebih mudah untuk mendaki gunung.</p>
-          </div>
-          </div>
-        </div>
-        </div>
-        <div className="mx-80">
-        <input
-          type="text"
-          placeholder="Berikan Pendapatmu Tentang Kami"
-          className="w-[450px] px-6 py-4 text-sm text-gray-600 placeholder-gray-400 bg-white rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all mt-[600px] h-9"
-          aria-label="Feedback input"
-        />
-        <div className="mx-[450px] -mt-9">
-        <button className="bg-white rounded-full w-14 h-9 mx-3 bg-gradient-to-b from-[#4A90E2] to-[#9CCAFF] hover:from-[#007AFF] hover:to-[#00E6FF] hover:translate-x-1 transition-all duration-300">
-          <Image src={arrowwhite} alt="arrow" className="w-14 h-12 -mt-1.5 pl-4 pr-4 max-w-full hover:translate-x-1 duration-300"/>
-        </button>
-        </div>
+          <form className='xl:mt-9 xl:w-[460px] xl:-ml-24 mt-[25px] -ml-16 w-[245px]'>
+            <Input placeholder='Berikan Pendapatmu Tentang Kami' className='rounded-full pl-5 '></Input>
+          </form>
+          <button className='bg-gradient-to-t from-[#9CCAFF] to-[#4A90E2] absolute flex items-center justify-center w-14 h-[38px] mt-[1118px] text-white rounded-full hover:from-[#00E6FF] hover:to-[#007AFF] hover:translate-x-1 duration-500 xl:ml-[450px] xl:mt-[477px] ml-64'>
+          <Image src={arrow} alt='arrow' className='w-14 h-9 p-3 rounded-full hover:translate-x-1 duration-300'/>
+          </button>
         </div>
       </div>
-  </div>
-  
-  );
-};
+    </div>
+    </div>
+    </>
+  )
+}
 
-export default Story;
+export default Story

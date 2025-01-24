@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import LogoInformasi from '@/assets/svgs/LogoInformasi.svg';
 import LogoTampilan from '@/assets/svgs/LogoTampilan.svg';
@@ -17,44 +19,45 @@ function Advantages() {
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {/* Card 1 */}
-              <div className="relative backdrop-blur-md w-full sm:w-60 h-36">
+              <div className="relative backdrop-blur-md w-full h-36 rounded-3xl">
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                   <Image src={LogoInformasi} alt="Logo" width={39} height={39} />
                   <h2 className="text-base md:text-xl font-semibold leading-5 text-black mt-4">
                     Informasi Gunung<br />Lengkap
                   </h2>
                 </div>
-                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-500 ease-in-out"></div>
+                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-500 ease-in-out">
+                </div>
               </div>
               {/* Card 2 */}
-              <div className="relative backdrop-blur-md w-full sm:w-60 h-36">
+              <div className="relative backdrop-blur-md w-full sm:w-60 h-36 rounded-3xl">
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                   <Image src={LogoTampilan} alt="Logo" width={39} height={39} />
                   <h2 className="text-base md:text-xl font-semibold leading-5 text-black mt-4">
                     Tampilan<br />Menarik
                   </h2>
                 </div>
-                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-300 ease-in-out"></div>
+                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-500 ease-in-out"></div>
               </div>
               {/* Card 3 */}
-              <div className="relative backdrop-blur-md w-full sm:w-60 h-36">
+              <div className="relative backdrop-blur-md w-full sm:w-60 h-36 rounded-3xl">
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                   <Image src={LogoBanyaktrip} alt="Logo" width={35} height={35} />
                   <h2 className="text-base md:text-xl font-semibold leading-5 text-black mt-4">
                     Banyak Trip<br />Tersedia
                   </h2>
                 </div>
-                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-300 ease-in-out"></div>
+                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-500 ease-in-out"></div>
               </div>
               {/* Card 4 */}
-              <div className="relative backdrop-blur-md w-full sm:w-60 h-36">
+              <div className="relative backdrop-blur-md w-full sm:w-60 h-36 rounded-3xl">
                 <div className="absolute inset-0 flex flex-col justify-center items-center">
                   <Image src={LogoPemesanan} alt="Logo" width={37} height={37} />
                   <h2 className="text-base md:text-xl font-semibold leading-5 text-black mt-4">
                     Pemesanan Trip<br />Mudah
                   </h2>
                 </div>
-                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-300 ease-in-out"></div>
+                <div className="text-center bg-[#AED0F8] opacity-30 rounded-3xl w-full sm:w-60 h-36 mx-auto hover:bg-[#6EAFFB] -z-50 transition-all duration-500 ease-in-out"></div>
               </div>
             </div>
             <Image
@@ -66,7 +69,7 @@ function Advantages() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Advantages;
