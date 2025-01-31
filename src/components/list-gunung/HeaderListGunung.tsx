@@ -16,7 +16,7 @@ const HeaderListGunung = () => {
   
         />
         <div className="absolute inset-0 flex flex-col pt-[47px] text-white justify-center items-start px-[20px] md:px-[50px] lg:px-[65px]">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[68px] font-semibold leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[55px] xl:text-[68px] font-semibold leading-tight">
             Pilih Gunung Favorit
             <br />
             Anda
