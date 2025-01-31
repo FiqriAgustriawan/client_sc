@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 // import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/NavbarComp";
-import SideBar from "@/components/SideBar";
 
 
 // const poppins = Poppins({
@@ -34,7 +33,7 @@ export default function RootLayout({
       <body className="font-poppins antialiased bg-[#f5f5f5]">
         <div className="w-full absolute z-50">
           <Navbar />
-          <SideBar />
+        
         </div>
         <main className="pt-[16px] pb-[12px]">{children}</main>
       </body>
