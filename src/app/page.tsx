@@ -25,7 +25,7 @@ export default function Home() {
       <LaciTanya/>
       <ReadytoChallenge/>
       <Footer/>
-
+   {/* tes */}
     </>
   );
 }
