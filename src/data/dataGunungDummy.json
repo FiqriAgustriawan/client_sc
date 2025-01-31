@@ -8,56 +8,56 @@
   },
   {
     "id": 2,
-    "nama_gunung": "Gunung Merapi",
+    "nama_gunung": "Mt Merapi",
     "ketinggian": "2968 MDPL",
     "trip_tersedia": "5 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 3,
-    "nama_gunung": "Gunung Semeru",
+    "nama_gunung": "Mt Semeru",
     "ketinggian": "3676 MDPL",
     "trip_tersedia": "2 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 4,
-    "nama_gunung": "Gunung Rinjani",
+    "nama_gunung": "Mt Rinjani",
     "ketinggian": "3726 MDPL",
     "trip_tersedia": "4 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 5,
-    "nama_gunung": "Gunung Bromo",
+    "nama_gunung": "Mt Bromo",
     "ketinggian": "2329 MDPL",
     "trip_tersedia": "6 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 6,
-    "nama_gunung": "Gunung Kelud",
+    "nama_gunung": "Mt Kelud",
     "ketinggian": "1731 MDPL",
     "trip_tersedia": "3 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 7,
-    "nama_gunung": "Gunung Agung",
+    "nama_gunung": "Mt Agung",
     "ketinggian": "3031 MDPL",
     "trip_tersedia": "7 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 8,
-    "nama_gunung": "Gunung Slamet",
+    "nama_gunung": "Mt Slamet",
     "ketinggian": "3428 MDPL",
     "trip_tersedia": "4 Trip Available",
     "gambar": "/assets/images/Card.png"
   },
   {
     "id": 9,
-    "nama_gunung": "Gunung Slamet",
+    "nama_gunung": "Mt Slamet",
     "ketinggian": "3428 MDPL",
     "trip_tersedia": "4 Trip Available",
     "gambar": "/assets/images/Card.png"
