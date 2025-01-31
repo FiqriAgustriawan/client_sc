@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-export default function GunungFavoritPage() {
+export default function InvoicePage() {
   const [transactions] = useState([
     {
       name: "RawallangiAdventure",
@@ -64,20 +64,23 @@ export default function GunungFavoritPage() {
 
   return (
     <div className="flex justify-end pr-1 mt-16">
-      <div className="w-[1000px] bg-white rounded-[24px] overflow-hidden relative mr-14 mt-10 shadow-lg p-6">
+      <div className="w-[1000px] bg-white rounded-[24px] overflow-hidden relative mr-14 mt-10 shadow-lg p-6 max-w-full ml-14">
         <h1 className="text-[28px] font-semibold text-[#2D3648] mb-6">Invoice</h1>
 
         <div className="space-y-2">
           {transactions.map((transaction, index) => (
-            <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-gray-50">
-              <div className="flex flex-col">
+            <div
+              key={index}
+              className="flex justify-between p-4 rounded-lg bg-gray-50 sm:flex-row flex-col sm:items-center items-start"
+            >
+              <div className="flex flex-col mb-2 sm:mb-0">
                 <span className="font-medium">{transaction.name}</span>
                 <span className="text-sm text-gray-600">{transaction.location}</span>
               </div>
 
-              <div className="text-gray-600">{transaction.date}</div>
+              <div className="text-gray-600 mb-2 sm:mb-0">{transaction.date}</div>
 
-              <div>
+              <div className="mb-2 sm:mb-0">
                 <span
                   className={`px-3 py-1 rounded-full text-sm ${
                     transaction.status === "Berhasil" ? "text-blue-600" : "text-red-600"
@@ -95,3 +98,4 @@ export default function GunungFavoritPage() {
     </div>
   )
 }
+

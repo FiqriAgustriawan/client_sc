@@ -38,7 +38,7 @@
         >
           <div className="flex items-center justify-between w-full">
             {/* Search input for mobile and tablet */}
-            <div className="flex items-center z-10 xl:hidden w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] ml-4 sm:ml-6">
+            <div className="flex items-center z-10 xl:hidden w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] ml-20 sm:ml-6">
               <div className="relative w-full">
                 <input
                   type="search"

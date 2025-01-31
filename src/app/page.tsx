@@ -6,9 +6,10 @@ import React from "react";
 // import WhatwOffer from '@/components/WhatwOffer'
 // import { LaciTanya } from '@/components/LaciTanya'
 // import ExploreMount from '@/components/ExploreMount'
-// import News2 from '@/components/News2'
-import Dashboard from "@/app/(dashboard-pengguna)/dashboard/page";
+// import News2 from '@/components/News2' 
+//  import Dashboard from "@/app/(dashboard-pengguna)/dashboard/page";
 import GunungFavoritPage from "./(dashboard-pengguna)/dashboard/Gunung-Favorit/page";
+//  import Invoice from "./(dashboard-pengguna)/dashboard/Invoice/page";
 
 
 export default function Home() {
@@ -21,9 +22,10 @@ export default function Home() {
       <WhatwOffer />
       <ExploreMount /> */}
       {/* <LaciTanya />   */}
-      {/* <News2 /> */}
-      {/* <Dashboard /> */}
-      <GunungFavoritPage />
+      {/* <News2 />  */}
+       {/* <Dashboard />   */}
+        <GunungFavoritPage /> 
+       {/* <Invoice />  */}
     </>
   );
 }

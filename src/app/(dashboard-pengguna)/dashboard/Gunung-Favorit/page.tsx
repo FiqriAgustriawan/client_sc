@@ -20,12 +20,12 @@ export default function GunungFavoritPage() {
   }
 
   return (
-    <div className="flex justify-end pr-1 mt-16">
-      <div className="w-[1000px] h-[900px] bg-[#FFFFFF] rounded-[24px] overflow-hidden relative mr-14 mt-10 shadow-lg">
-        <div className="mt-7 px-6 mr-3 ml-3">
+    <div className="flex justify-center lg:justify-end pr-1 mt-16">
+      <div className="w-full max-w-[1000px] bg-[#FFFFFF] rounded-[24px] overflow-hidden relative mx-4 sm:mx-6 lg:mx-0 lg:mr-14 mt-10 shadow-lg">
+        <div className="mt-7 px-4 sm:px-6 lg:px-6">
           <h1 className="text-[28px] font-semibold text-[#2D3648] mb-6">Gunung Favorit</h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {mountains.map((mountain, index) => (
               <div key={index} className="relative aspect-[16/9] rounded-[24px] overflow-hidden bg-gray-200">
                 <Image
@@ -33,7 +33,7 @@ export default function GunungFavoritPage() {
                   alt={mountain.name}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   priority={index < 6}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
