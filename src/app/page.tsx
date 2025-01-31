@@ -1,4 +1,3 @@
-
 import React from 'react'
 import HeroSection from '../components/HeroSection'
 // import StatsSection from '../components/StatsSection'
@@ -10,6 +9,7 @@ import News2 from '@/components/News2'
 import Story from '@/components/Story'
 import ReadytoChallenge from '@/components/ReadytoChallenge'
 import Footer  from '@/components/Footer'
+
 
 
 
@@ -25,6 +25,7 @@ export default function Home() {
       <LaciTanya/>
       <ReadytoChallenge/>
       <Footer/>
+
     </>
   );
 }
