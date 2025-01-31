@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import arrow from '@/assets/svgs/Arrow.svg';
 import dataGunung from '@/data/dataGunungDummy.json';
-
+import { LikeButton } from './Card/tombolLike';
 export default function ExploreMount() {
   return (
     <div className="bg-white py-12 px-4 sm:px-8 lg:px-12">
@@ -113,46 +113,48 @@ export default function ExploreMount() {
             </div>
           </div>
 
-         {/* Mobile Layout */}
-<div className="block md:hidden">
-  <div className="overflow-x-auto scrollbar-hidden" style={{ scrollBehavior: 'smooth' }}>
-    <div className="flex space-x-6">
-      {dataGunung.map((gunung) => (
-        <div
-          key={gunung.id}
-          className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl flex-shrink-0 w-[90%] h-[400px] transition-all duration-500 ease-in-out"
-        >
-          {/* Image */}
-          <Image
-            src={gunung.gambar}
-            alt={gunung.nama_gunung}
-            width={500}
-            height={300}
-            className="rounded-3xl w-full h-full object-cover"
-          />
+          {/* Mobile Layout */}
+          <div className="block md:hidden">
+            <div className="overflow-x-auto scrollbar-hidden" style={{ scrollBehavior: 'smooth' }}>
+              <div className="flex space-x-6">
+                {dataGunung.map((gunung) => (
+                  <div
+                    key={gunung.id}
+                    className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl flex-shrink-0 w-[90%] h-[400px] transition-all duration-500 ease-in-out"
+                  >
+                    {/* Image */}
+                    <Image
+                      src={gunung.gambar}
+                      alt={gunung.nama_gunung}
+                      width={500}
+                      height={300}
+                      className="rounded-3xl w-full h-full object-cover"
+                    />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-40 rounded-3xl"></div>
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-black bg-opacity-40 rounded-3xl"></div>
 
-          {/* Trip Tersedia (Top-Left Corner) */}
-          <div className="absolute top-5   bg-opacity-80 px-4 py-2 rounded-lg">
-            <h2 className="text-white text-md font-normal">{gunung.trip_tersedia}</h2>
+                    {/* Trip Tersedia (Top-Left Corner) */}
+                    <div className="absolute top-5   bg-opacity-80 px-4 py-2 rounded-lg">
+                      <h2 className="text-white text-md font-normal">{gunung.trip_tersedia}</h2>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="absolute bottom-7 left-5 right-5 text-white">
+                     
+                        <LikeButton />
+                     
+                      {/* Ketinggian */}
+                      <h2 className="text-sm sm:text-base  font-normal ">{gunung.ketinggian}</h2>
+                      {/* Gunung Name */}
+                      <h2 className="text-[25px] sm:text-[24px] font-medium">{gunung.nama_gunung}</h2>
+
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-           
-          {/* Card Content */}
-          <div className="absolute bottom-7 left-5 right-5 text-white">
-            
-            {/* Ketinggian */}
-            <h2 className="text-sm sm:text-base  font-normal ">{gunung.ketinggian}</h2>
-            {/* Gunung Name */}
-            <h2 className="text-[25px] sm:text-[24px] font-medium">{gunung.nama_gunung}</h2>
-               
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
         </div>
       </div>
     </div>

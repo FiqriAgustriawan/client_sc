@@ -1,31 +1,31 @@
-import React from "react";
-// import HeroSection from '../components/HeroSection'
+import React from 'react'
+import HeroSection from '../components/HeroSection'
 // import StatsSection from '../components/StatsSection'
-// import AboutUs from '../components/AboutUs'
-// import Adventages from '@/components/Adventages'
-// import WhatwOffer from '@/components/WhatwOffer'
-// import { LaciTanya } from '@/components/LaciTanya'
-// import ExploreMount from '@/components/ExploreMount'
-// import News2 from '@/components/News2' 
-//  import Dashboard from "@/app/(dashboard-pengguna)/dashboard/page";
-import GunungFavoritPage from "./(dashboard-pengguna)/dashboard/Gunung-Favorit/page";
-//  import Invoice from "./(dashboard-pengguna)/dashboard/Invoice/page";
+import Adventages from '@/components/Adventages'
+import WhatwOffer from '@/components/WhatwOffer'
+import { LaciTanya } from '@/components/LaciTanya'
+import ExploreMount from '@/components/ExploreMount'
+import News2 from '@/components/News2'
+import Story from '@/components/Story'
+import ReadytoChallenge from '@/components/ReadytoChallenge'
+import Footer  from '@/components/Footer'
+
+
 
 
 export default function Home() {
   return (
     <>
-      {/* <HeroSection />
-      <StatsSection />
-      <AboutUs />
-      <Adventages />
-      <WhatwOffer />
-      <ExploreMount /> */}
-      {/* <LaciTanya />   */}
-      {/* <News2 />  */}
-       {/* <Dashboard />   */}
-        <GunungFavoritPage /> 
-       {/* <Invoice />  */}
+      <HeroSection />
+      <Adventages/>
+      <WhatwOffer/>
+      <ExploreMount/>
+      <News2/>
+      <Story/>
+      <LaciTanya/>
+      <ReadytoChallenge/>
+      <Footer/>
+
     </>
   );
 }

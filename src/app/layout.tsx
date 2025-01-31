@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/NavbarComp";
 import SideBar from "@/components/SideBar";
 
 
-const poppins = Poppins({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
-});
+// const poppins = Poppins({
+//   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-poppins',
+// });
 
 export const metadata: Metadata = {
   title: "SummitCess - Mountain Adventures",
@@ -30,9 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" >
       <body className="font-poppins antialiased bg-[#f5f5f5]">
-        <div className="w-full">
+        <div className="w-full absolute z-50">
           <Navbar />
           <SideBar />
         </div>
