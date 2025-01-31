@@ -195,7 +195,7 @@ export default function ProfilePage() {
 
             <div className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-[12px]">
               <div className="flex items-center gap-3">
-                <img src="https://www.google.com/favicon.ico" alt="Google" className="w-6 h-6" />
+                {/* <img src="https://www.google.com/favicon.ico" alt="Google" className="w-6 h-6" /> */}
                 <span className="text-[#6B7280]">Belum Terhubung</span>
               </div>
               <span className="text-[#9CA3AF]">-</span>
