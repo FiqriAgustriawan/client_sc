@@ -5,7 +5,7 @@ import type React from "react" // Added import for React
 
 export default function ProfilePage() {
   const [formData, setFormData] = useState({
-    fullName: "Summit Bin Ahmad",
+    fullName: "",
     gender: "Laki-Laki",
     birthDate: { day: "", month: "", year: "" },
     nik: "",
