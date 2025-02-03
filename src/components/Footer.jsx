@@ -88,8 +88,8 @@ function Footer() {
         </div>
         <div className="flex flex-col items-center justify-center w-full py-4 mt-12 border-t border-slate-200 md:flex-row md:justify-between">
           <p className="block mb-4 text-sm text-center text-slate-500 md:mb-0">
-            Copyright © 2024 
-            <a href="https://material-tailwind.com/">Kelompok IncTech</a>. All
+            Copyright © 2025 
+            <a href="https://material-tailwind.com/">SummitCs</a>. All
             Rights Reserved.
           </p>
           <div className="flex gap-4 text-slate-600 sm:justify-center">
