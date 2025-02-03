@@ -6,9 +6,9 @@ import Image from "next/image";
 
 const HeroImage = () => {
   return (
-    <div className="mx-auto px-4  pt-[79px]">
+    <div className="mx-auto px-4 pt-[79px]">
     <div
-      className="relative rounded-2xl o verflow-hidden"
+      className="relative rounded-2xl overflow-hidden"
       style={{ height: "95vh" }}
     >
       <Image
