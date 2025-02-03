@@ -6,7 +6,7 @@ const ReadytoChallenge = () => {
   return (
     <div className="mx-auto px-4 pt-20 md:pt-24 lg:pt-32">
       <div
-        className="bg-gradient-to-t from-[#D7E9FF] to-[#4A93E8] relative rounded-3xl overflow-hidden w-full max-w-[1150px] mx-auto mb-5"
+        className="bg-gradient-to-t from-[#D7E9FF] to-[#4A93E8] relative rounded-3xl overflow-hidden w-full "
         style={{ height: "75vh" }}
       >
         <div className="absolute inset-0 rounded-3xl flex flex-col items-center justify-center text-gray-800 px-6">
