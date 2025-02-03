@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import FotoNws from '@/assets/images/FotoBerita.png';
-
+  
 export default function News2() {
   return (
     <>

@@ -1,6 +1,5 @@
 import React from 'react'
 import HeroSection from '../components/HeroSection'
-// import StatsSection from '../components/StatsSection'
 import Adventages from '@/components/Adventages'
 import WhatwOffer from '@/components/WhatwOffer'
 import { LaciTanya } from '@/components/LaciTanya'
@@ -16,7 +15,7 @@ import Footer  from '@/components/Footer'
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <HeroSection/>
       <Adventages/>
       <WhatwOffer/>
       <ExploreMount/>

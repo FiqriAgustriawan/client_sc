@@ -1,102 +1,105 @@
 'use client'
 
-import { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
 import Image from 'next/image'
-import bglogin from "@/assets/images/bglogin.jpeg"
+import { Label } from '@/components/ui/label'
+import Line from '@/assets/svgs/LineLogin.svg'
+import Google from '@/assets/svgs/Google.svg'
 
-export default function SignUp() {
-  const [isLoading, setIsLoading] = useState(false)
+export default function LoginPage() {
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100" style={{ position: 'relative', overflow:'hidden '}}>
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="relative w-full h-full">
-          <Image
-            src={bglogin}
-            alt="Background Image"
-            layout="fill"
-            objectFit="cover"
-            priority
-            className="absolute inset-0 object-cover"
-          />
-
-          <div className="absolute inset-0 bg-black bg-opacity-5 backdrop-blur-sm" />
-        </div>
-      </div>
-      <div className="w-full max-w-[400px] p-8 bg-white rounded-3xl shadow-lg z-0 relative">
-        <div className="space-y-6">
+    <div className='bg-slate-100'>
+      <div className="w-full max-w-[400px] xl:p-8 rounded-3xl z-10 relative xl:pt-28 xl:mx-5">
+        <div className="space-y-4 sm:space-y-6">
           <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Sign up to Summitcees
+            <h1 className="xl:text-3xl text-start font-bold tracking-wide text-[#1F4068]">
+              Daftar Summit Cees
             </h1>
           </div>
 
           <div className="space-y-4">
-            <div className="space-y-2">
+            <div className='grid grid-cols-2'>
+            <div className="space-y-2 xl:w-[158px]">
               <Input
-                id="username"
-                placeholder="Username"
+                id="nd"
+                placeholder="Nama Depan"
                 type="text"
                 autoCapitalize="none"
-                autoComplete="email"
-                autoCorrect="off"
-                disabled={isLoading}
-              />
+                autoComplete="namadepan"
+                autoCorrect="off"  
+                className='rounded-3xl bg-white'
+                />
             </div>
-
-            <div className="space-y-2">
+            <div className="space-y-2 xl:w-[158px] xl:-ml-2">
               <Input
-                id="email"
-                placeholder="Email"
-                type="email"
+                id="nd"
+                placeholder="Nama Depan"
+                type="text"
                 autoCapitalize="none"
-                autoComplete="email"
+                autoComplete="namadepan"
                 autoCorrect="off"
-                disabled={isLoading}
-              />
+                className='rounded-3xl bg-white'
+                />
             </div>
-
-            <div className="space-y-2">
+            </div>
+            <div className="space-y-2 xl:w-80">
               <Input
                 id="password"
                 placeholder="Password"
                 type="password"
                 autoComplete="current-password"
-                disabled={isLoading}
-              />
+                className='rounded-3xl bg-white'
+                />
             </div>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Checkbox id="remember" className='rounded-full' />
-                <Label htmlFor="remember" className="text-sm">
-                  Remember Me
+                <Label htmlFor="remember" className="text-xs">
+                  Ingat Saya
                 </Label>
               </div>
 
               <Link 
                 href="/forgot-password" 
-                className="text-sm text-blue-500 hover:text-blue-600"
+                className="text-xs text-[#A5A5A5] xl:mx-5"
               >
-                Forgot Password
+                Lupa Password?
               </Link>
             </div>
 
             <Button 
-              className="w-full h-10 px-4 py-2 text-white rounded-md bg-gradient-to-br from-[#0080FF] to-[#00FBFF] hover:from-[#007AFF] hover:to-[#00E6FF] focus:outline-none focus:ring-2 focus:ring-[#0080FF] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed" 
-              disabled={isLoading}
-            >
-              Sign up
+              className="relative xl:w-80 rounded-3xl bg-[#4A90E2] isolation-auto z-10 before:absolute before:w-full before:transition-all before:duration-300 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#1364C4] before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-300 inline-flex items-center justify-center text-sm font-normal text-white shadow-sm gap-x-2 disabled:opacity-50 disabled:pointer-events-none"
+              >
+              Sign In
             </Button>
+
+            <Image src={Line} alt='batas' className='xl:w-16 xl:mx-32'/>
+
+            <Button 
+              className="relative xl:w-80 rounded-3xl text-black bg-white hover:bg-white "
+              >
+              <Image src={Google} alt='logo' className='xl:w-5'/>
+              Sign In With Google
+            </Button>
+          </div>
+
+
+          <div className="text-center text-xs xl:pt-[45px]">
+            {"Belum Punya Akun? "}
+            <Link 
+              href="/SignUp" 
+              className="text-blue-500 hover:text-blue-600"
+              >
+              Daftar
+            </Link>
+            {" Sekarang"}
           </div>
         </div>
       </div>
     </div>
   )
 }
-
