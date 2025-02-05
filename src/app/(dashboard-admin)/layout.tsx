@@ -30,11 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="font-poppins antialiased bg-[#f5f5f5]">
+      <body className="font-poppins bg-[#f5f5f5]">
         <div className="w-full">
         <Sidebar/>
         </div>
-        <main className="pt-[16px] pb-[12px]">{children}</main>
+        <main className="container">{children}</main>
       </body>
     </html>
   );
