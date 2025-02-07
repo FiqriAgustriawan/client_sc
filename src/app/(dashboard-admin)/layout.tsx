@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 // import "./globals.css";
+
 import Sidebar from "@/components/Dashboard/Admin/SidebarAdmin";
+
 
 
 const poppins = Poppins({
@@ -30,11 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="font-poppins antialiased bg-[#f5f5f5]">
+      <body className="font-poppins bg-[#f5f5f5]">
         <div className="w-full">
         <Sidebar/>
         </div>
-        <main className="pt-[16px] pb-[12px]">{children}</main>
+        <main className="container">{children}</main>
       </body>
     </html>
   );
