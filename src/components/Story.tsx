@@ -47,6 +47,7 @@ export default function StoriesSection() {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768) // 768px is the standard breakpoint for medium screens
     }
+  
 
     checkIsMobile()
     window.addEventListener("resize", checkIsMobile)
@@ -95,6 +96,7 @@ export default function StoriesSection() {
           </div>
         </div>
       </div>
+      
     </section>
   )
 }
