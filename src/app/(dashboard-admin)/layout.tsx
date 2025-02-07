@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 // import "./globals.css";
-import Sidebar from "@/components/Dashboard/penyedia-jasa/Sidebar-jasa";
+
+import Sidebar from "@/components/Dashboard/Admin/SidebarAdmin";
+
 
 
 const poppins = Poppins({
