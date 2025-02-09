@@ -60,7 +60,7 @@ export default function MountainDetailsWithTripSaya() {
             </div>
           </div>
         </div>
-
+        {/* End of Header Section    */}
         {/* Gallery Section */}
         <div className="bg-white rounded-[32px] p-6 shadow-lg mb-6">
           <div className="grid grid-cols-12 gap-4">
