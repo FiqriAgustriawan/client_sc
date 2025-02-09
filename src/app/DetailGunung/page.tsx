@@ -33,7 +33,7 @@ export default function MountainDetailsWithTripSaya() {
 
   return (
     <div className="">
-      <div className="max-w-6xl mx-auto px-6 pt-8 pb-12 mt-12">
+      <div className="max-w-6xl mx-auto px-6 pt-8 pb-12 mt-13">
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
