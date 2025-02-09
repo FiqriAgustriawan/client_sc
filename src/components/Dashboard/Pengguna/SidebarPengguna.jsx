@@ -72,7 +72,7 @@ export default function Sidebar() {
               {/* Navigation Section */}
               <nav className="space-y-1 mb-4">
                 <Link
-                  href="/trip"
+                  href="/dashboard/Trip-Saya"
                   className="flex items-center gap-3 p-2  text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg
@@ -90,7 +90,7 @@ export default function Sidebar() {
                   Trip Saya
                 </Link>
                 <Link
-                  href="/favorites"
+                  href="/dashboard/Gunung-Favorit"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg
@@ -108,7 +108,7 @@ export default function Sidebar() {
                   Gunung Favorit
                 </Link>
                 <Link
-                  href="/invoice"
+                  href="/dashboard/Invoice"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg
@@ -143,7 +143,7 @@ export default function Sidebar() {
                   Invoice
                 </Link>
                 <Link
-                  href="/history"
+                  href="/dashboard/History-Pendakian"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg
@@ -167,7 +167,7 @@ export default function Sidebar() {
               {/* Profile and Logout Section */}
               <nav className="space-y-2">
                 <Link
-                  href="/profile"
+                  href="/dashboard"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg

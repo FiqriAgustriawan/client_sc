@@ -9,7 +9,7 @@ export default function GunungFavoritPage() {
       name: "Bulu Baria",
       elevation: "1320 MDPL",
       isFavorite: true,
-      image: "/mountain-image.jpg",
+      image: "/assets/images/Card.png",
     }),
   )
 
