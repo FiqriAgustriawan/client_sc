@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Adjust from '@/assets/svgs/Adjust.svg';
-import Chart21 from '@/app/(dashboard-admin)/admin/chart';
-
+import Chart21 from '@/app/(dashboard-admin)/admin/chart'
+import BarChart from '@/app/(dashboard-admin)/admin/chart'
 
 
 
@@ -41,24 +41,7 @@ function page() {
                     <Image src={Adjust} width={20} height={20} alt='adjust'/>
                   </div>
                 </div>
-                <div>
-                  <div className='flex gap-3 items-end mt-4'> 
-                    <div className='w-7 rounded-xl h-60 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-72 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-56 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-80 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-60 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-72 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-56 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-80 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-60 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-72 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-56 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-80 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-56 bg-[#4a90e2]'/>
-                    <div className='w-7 rounded-xl h-80 bg-[#4a90e2]'/>
-                  </div>
-                </div>
+                 <BarChart/>
               </div>
               <div className='flex items-end grid grid-cols-1 gap-y-2 mt-12'>
                 <div className='bg-[#eff6fe] items-center flex justify-center w-[290px] h-[50px] rounded-[20px] '>
@@ -96,7 +79,7 @@ function page() {
             </div>
           </div>
         </div>
-       <Chart21/>
+
     </div> 
     </>
   )
