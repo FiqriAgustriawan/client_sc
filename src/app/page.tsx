@@ -12,18 +12,18 @@ import Footer  from '@/components/Footer'
 export default function Home() {
   return (
     <>
-      {/* <HeroSection/>
+      <HeroSection/>
       <Adventages/>
       <WhatwOffer/>
       <ExploreMount/>
       <News2/>
       <Story/>
-      {/* <LaciTanya/> */}
+      {/* {/* <LaciTanya/> */}
       <ReadytoChallenge/>
-      <Footer/> */}
-      <DetailGunung/>
+      <Footer/> 
+  
       
-   {/* tes */}
+
     </>
   );
 }

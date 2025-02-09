@@ -48,26 +48,26 @@ export default function MountainDetailsWithTripSaya() {
               <span>Bulu baria</span>
             </div>
           </div>
-
+{/* adasd */}
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">Bulu Baria</h1>
-              <p className="text-white/90 mb-1">Bulu Baria, Manimbahoi, Parigi, Gowa Regency, South Sulawesi</p>
-              <p className="text-white/90">10.00 - 22.00</p>
+              <h1 className="text-4xl font-bold text-dark mb-2">Bulu Baria</h1>
+              <p className="text-dark/90 mb-1">Bulu Baria, Manimbahoi, Parigi, Gowa Regency, South Sulawesi</p>
+              <p className="text-dark/90">10.00 - 22.00</p>
             </div>
             <div className="bg-white px-6 py-2 rounded-full shadow-sm">
               <span className="font-medium">2730 MDPL</span>
             </div>
           </div>
         </div>
-
+        {/* End of Header Section    */}
         {/* Gallery Section */}
         <div className="bg-white rounded-[32px] p-6 shadow-lg mb-6">
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-7">
               <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden">
                 <Image
-                  src="/images/bulu-baria-main.jpg"
+                  src="/assets/images/detail.png"
                   alt="Panoramic view of Bulu Baria mountain"
                   fill
                   className="object-cover"
@@ -76,10 +76,10 @@ export default function MountainDetailsWithTripSaya() {
             </div>
             <div className="col-span-5 grid grid-cols-2 gap-4">
               {[
-                { src: "/images/bulu-baria-1.jpg", alt: "Bulu Baria hiking trail" },
-                { src: "/images/bulu-baria-2.jpg", alt: "Bulu Baria summit view" },
-                { src: "/images/bulu-baria-3.jpg", alt: "Bulu Baria camping site" },
-                { src: "/images/bulu-baria-4.jpg", alt: "Bulu Baria waterfall" },
+                { src: "/assets/images/detail.png", alt: "Bulu Baria hiking trail" },
+                { src: "/assets/images/detail.png", alt: "Bulu Baria summit view" },
+                { src: "/assets/images/detail.png", alt: "Bulu Baria camping site" },
+                { src: "/assets/images/detail.png", alt: "Bulu Baria waterfall" },
               ].map((img, i) => (
                 <div key={i} className="relative aspect-square rounded-[24px] overflow-hidden">
                   {i === 3 && (
