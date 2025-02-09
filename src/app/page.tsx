@@ -9,13 +9,10 @@ import Story from '@/components/Story'
 import ReadytoChallenge from '@/components/ReadytoChallenge'
 import Footer  from '@/components/Footer'
 
-
-
-
 export default function Home() {
   return (
     <>
-      <HeroSection/>
+      {/* <HeroSection/>
       <Adventages/>
       <WhatwOffer/>
       <ExploreMount/>
@@ -23,7 +20,9 @@ export default function Home() {
       <Story/>
       {/* <LaciTanya/> */}
       <ReadytoChallenge/>
-      <Footer/>
+      <Footer/> */}
+      <DetailGunung/>
+      
    {/* tes */}
     </>
   );
