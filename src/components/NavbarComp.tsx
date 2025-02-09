@@ -38,12 +38,12 @@
         >
           <div className="flex items-center justify-between w-full">
             {/* Search input for mobile and tablet */}
-            <div className="flex items-center z-10 xl:hidden w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] ml-20 sm:ml-6">
+            <div className="flex items-center z-10 xl:hidden w-full max-w-[300px] sm:max-w-[250px] md:max-w-[300px] ml-20 sm:ml-6">
               <div className="relative w-full">
                 <input
                   type="search"
                   placeholder="Search"
-                  className="w-full bg-transparent rounded-full py-2 pl-8 pr-4 text-sm focus:outline-none shadow-md"
+                  className="w-full  rounded-full py-3 pl-8 pr-4 text-sm focus:outline-none shadow-md"
                 />
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Image

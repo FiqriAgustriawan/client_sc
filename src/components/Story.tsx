@@ -78,7 +78,7 @@ export default function StoriesSection() {
               {/* Stories grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {visibleStories.map((story, index) => (
-                  <div key={index} className={`${index % 2 === 0 ? "md:translate-y-8" : ""}`}>
+                  <div key={index} className={`md:translate-y-8 ${isMobile ? "mx-auto" : ""}`}>
                     <StoryCard {...story} />
                   </div>
                 ))}
