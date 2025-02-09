@@ -9,7 +9,7 @@ export function LaciTanya() {
   return (
     <>
     <div className=" flex flex-col items-center">
-    <Accordion type="single" collapsible className="w-[50%] ">
+    <Accordion type="single" collapsible className="w-[70%] ">
       <AccordionItem value="item-1">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
         <AccordionContent>
