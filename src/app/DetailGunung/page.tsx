@@ -48,7 +48,7 @@ export default function MountainDetailsWithTripSaya() {
               <span>Bulu baria</span>
             </div>
           </div>
-
+{/* adasd */}
           <div className="flex justify-between items-start">
             <div>
               <h1 className="text-4xl font-bold text-dark mb-2">Bulu Baria</h1>
