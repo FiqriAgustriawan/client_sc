@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Logo  from "@/assets/svgs/LogoProduct.svg"
 import bgLogin from "@/assets/images/Bg-login.png"
+
 export default function SignUpPage() {
   return (
     <div className="min-h-screen w-full bg-white">
@@ -57,9 +58,11 @@ export default function SignUpPage() {
                 </label>
               </div>
 
-              <button className="w-full py-2 rounded-3xl bg-[#4A90E2] text-white hover:bg-[#1364C4] transition-colors duration-300">
+              <div className="w-full py-2 rounded-3xl bg-[#4A90E2] text-white hover:bg-[#1364C4] transition-colors duration-300">
+              <Link href={'Login'} className="px-52 rounded-3xl py-3 w-full" >
                 Daftar
-              </button>
+              </Link>
+              </div>
 
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">

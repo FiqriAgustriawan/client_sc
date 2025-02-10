@@ -5,13 +5,13 @@ import Chart21 from '@/app/(dashboard-admin)/admin/chart'
 import BarChart from '@/app/(dashboard-admin)/admin/chart'
 
 
-
+ 
 function page() {
   return (
     <>
      <div className="min-h-screen p-4 md:p-10 flex flex-col md:flex-row mt-16 md:mr-5 max-w-[1200px] mx-auto">
         <div className="hidden md:block w-[10%]">{/* sidebar space */}</div>
-        <div className=" -mt-[3px] w-[1640px] bg-white rounded-[24px] overflow-hidden relative mr-14 mt-10 shadow-lg p-6 max-w-full ml-14">
+        <div className=" -mt-[3px] w-[1640px] bg-white rounded-[24px] overflow-hidden relative mr-14 shadow-lg p-6 max-w-full ml-14">
           <div className='mx-4 mt-2'>
             <h1 className='text-xl font-medium'>Dashboard</h1>
             <div className='mt-8 grid grid-cols-4 gap-x-7'>
@@ -43,7 +43,7 @@ function page() {
                 </div>
                  <BarChart/>
               </div>
-              <div className='flex items-end grid grid-cols-1 gap-y-2 mt-12'>
+              <div className='items-end grid grid-cols-1 gap-y-2 mt-12'>
                 <div className='bg-[#eff6fe] items-center flex justify-center w-[290px] h-[50px] rounded-[20px] '>
                   <h1 className='text-[20px] font-semibold text-[#1f4068]'>Notifikasi</h1>
                 </div>

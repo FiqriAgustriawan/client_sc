@@ -10,7 +10,7 @@ function tripjasa() {
         <div className="bg-white flex flex-col w-full rounded-3xl min-h-[1000px] shadow-lg p-4 md:p-8">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-start font-semibold text-2xl">Trip Kamu</h1>
-            <Link href={"/"} className="text-[#0066FF] font-semibold text-lg">
+            <Link href={'buat-trip'} className="text-[#0066FF] font-semibold text-lg">
               + Buat Trip
             </Link>
           </div>
