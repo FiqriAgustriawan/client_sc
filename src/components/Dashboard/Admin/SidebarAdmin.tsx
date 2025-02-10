@@ -71,7 +71,7 @@ export default function Sidebar() {
                             {/* Navigation Section */}
                             <nav className="space-y-1 mb-4">
                                 <Link
-                                    href="/trip"
+                                    href="admin"
                                     className="flex items-center gap-3 p-2  text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
