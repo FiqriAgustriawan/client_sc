@@ -189,10 +189,7 @@ export default function NavBar() {
           </div>
         </div>
       </div>
-
-      {/* Sidebar toggle button */}
       <div className="fixed bottom-4 right-4 xl:hidden z-50">
-       
       </div>
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </>

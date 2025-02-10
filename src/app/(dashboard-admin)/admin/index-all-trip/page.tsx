@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+"use client"
+import Link from "next/link"
 
 export default function HistoryTrip() {
   const trips = [
@@ -59,7 +59,7 @@ export default function HistoryTrip() {
       price: "Rp.135.000",
       activity2: "Telah Selesai",
     },
-  ];
+  ]
 
   return (
     <div className="bg-white p-4 sm:p-6 w-full xl:max-w-[66%] xl:mx-[29%] lg:max-w-[60%] lg:mx-[37%] xl:mt-[7%] mt-8 sm:mt-12 lg:mt-16 shadow-lg rounded-3xl">
@@ -76,29 +76,45 @@ export default function HistoryTrip() {
         </div>
       </div>
 
-      {/* Card List */}
-      <div className="space-y-4">
-        {trips.map((trip, index) => (
-          <div
-            key={index}
-            className="bg-[#F6F6F6] rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between"
-          >
-            {/* Informasi Trip */}
-            <div className="space-y-1 w-full sm:w-auto text-left">
-              <h3 className="font-semibold text-lg">{trip.destination}</h3>
-              <p className="text-sm text-gray-600">{trip.type}</p>
-            </div>
-
-            {/* Detail Data */}
-            <div className="grid grid-cols-2 sm:flex gap-3 sm:gap-16 w-full sm:w-auto text-left">
-              <p className="text-sm font-medium">{trip.date}</p>
-              <p className="text-sm font-medium">{trip.participants}</p>
-              <p className="text-sm font-medium">{trip.price}</p>
-              <p className="text-sm font-medium">{trip.activity || trip.activity2}</p>
-            </div>
-          </div>
-        ))}
+      {/* Table */}
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-[#F6F6F6] text-left">
+            <tr>
+              <th className="px-4 py-3 text-sm font-semibold rounded-l-2xl">Destination</th>
+              <th className="px-4 py-3 text-sm font-semibold">Participants</th>
+              <th className="px-4 py-3 text-sm font-semibold">Date</th>
+              <th className="px-4 py-3 text-sm font-semibold">Price</th>
+              <th className="px-4 py-3 text-sm font-semibold rounded-r-2xl">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-100">
+            {trips.map((trip, index) => (
+              <tr key={index} className="hover:bg-gray-50">
+                <td className="px-4 py-3">
+                  <div className="space-y-1">
+                    <h3 className="font-semibold text-sm">{trip.destination}</h3>
+                    <p className="text-xs text-gray-600">{trip.type}</p>
+                  </div>
+                </td>
+                <td className="px-4 py-3 text-sm">{trip.date}</td>
+                <td className="px-4 py-3 text-sm">{trip.participants}</td>
+                <td className="px-4 py-3 text-sm">{trip.price}</td>
+                <td className="px-4 py-3 text-sm">
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs ${
+                      trip.activity ? "bg-blue-100 text-blue-700" : "bg-green-100 text-green-700"
+                    }`}
+                  >
+                    {trip.activity || trip.activity2}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  );
+  )
 }
+
