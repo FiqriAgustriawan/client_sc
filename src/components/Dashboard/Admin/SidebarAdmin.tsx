@@ -44,7 +44,7 @@ export default function Sidebar() {
 
             {/* Sidebar Container */}
             <div
-                className={`fixed mt-[87px] z-40 left-9 w-full lg:w-[35%] lg:max-w-[400px] h-full transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen
+                className={`fixed -mt-8 z-40 left-9 w-full lg:w-[35%] lg:max-w-[400px] h-full transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen
                     ? "translate-x-0 pr-16"
                     : "-translate-x-full lg:translate-x-0"
                     }`}
@@ -80,7 +80,7 @@ export default function Sidebar() {
                                     Dashboard
                                 </Link>
                                 <Link
-                                    href="/favorites"
+                                    href="penyedia-trip"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@ export default function Sidebar() {
                                     Penyedia Trip
                                 </Link>
                                 <Link
-                                    href="/invoice"
+                                    href="kelola-gunung"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 29 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +102,7 @@ export default function Sidebar() {
                                     Kelola Gunung
                                 </Link>
                                 <Link
-                                    href="/history"
+                                    href="kelolah-berita"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +114,7 @@ export default function Sidebar() {
                                     Kelola Berita
                                 </Link>
                                 <Link
-                                    href="/history"
+                                    href="index-trip-req"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +123,7 @@ export default function Sidebar() {
 
 
 
-                                    Kelola Berita
+                                    Trip
                                 </Link>
                             </nav>
 
