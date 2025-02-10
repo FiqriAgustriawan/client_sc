@@ -21,7 +21,7 @@ export default function GunungFavoritPage() {
 
   return (
     <div className="flex justify-center lg:justify-end pr-1 mt-16">
-      <div className="w-full max-w-[1000px] bg-[#FFFFFF] rounded-[24px] overflow-hidden relative mx-4 sm:mx-6 lg:mx-0 lg:mr-14 mt-10 shadow-lg">
+      <div className="w-full max-w-[1000px] bg-[#FFFFFF]   rounded-[24px] overflow-hidden relative mx-4 sm:mx-6 lg:mx-0 lg:mr-14 mt-10 shadow-lg">
         <div className="mt-7 px-4 sm:px-6 lg:px-6">
           <h1 className="text-[28px] font-semibold text-[#2D3648] mb-6">Gunung Favorit</h1>
 
