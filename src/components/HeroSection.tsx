@@ -21,7 +21,7 @@ const HeroImage = () => {
       />
       <div className="absolute inset-0 bg-black/30 rounded 3xl flex flex-col items-center justify-center text-white">
         <div className="sm:hidden absolute top-32 left-1/2 transform -translate-x-1/2">
-          <Image src={Logo} alt="Logo" className="w-20 h-20 opacity-70" />
+          {/* <Image src={Logo} alt="Logo" className="w-20 h-20 opacity-70" /> */}
         </div>
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold max-w-4xl mx-auto leading-tight text-center mb-6">
           Setiap Langkah Membawa
