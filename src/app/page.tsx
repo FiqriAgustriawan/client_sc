@@ -9,9 +9,6 @@ import Story from '@/components/Story'
 import ReadytoChallenge from '@/components/ReadytoChallenge'
 import Footer  from '@/components/Footer'
 
-
-
-
 export default function Home() {
   return (
     <>
@@ -21,10 +18,12 @@ export default function Home() {
       <ExploreMount/>
       <News2/>
       <Story/>
-      <LaciTanya/>
+       <LaciTanya/>
       <ReadytoChallenge/>
-      <Footer/>
-   {/* tes */}
+      <Footer/> 
+  
+      
+
     </>
   );
 }

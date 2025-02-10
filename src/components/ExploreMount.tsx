@@ -120,7 +120,7 @@ export default function ExploreMount() {
                 {dataGunung.map((gunung) => (
                   <div
                     key={gunung.id}
-                    className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl flex-shrink-0 w-[90%] h-[400px] transition-all duration-500 ease-in-out"
+                    className="relative bg-[#e7f2ff] hover:bg-[#d4e8ff] rounded-3xl flex-shrink-0 w-[90%] h-[450px] transition-all duration-500 ease-in-out"
                   >
                     {/* Image */}
                     <Image
@@ -140,10 +140,10 @@ export default function ExploreMount() {
                     </div>
 
                     {/* Card Content */}
+                    <div className="absolute top-5 right-5">
+                      <LikeButton />
+                    </div>
                     <div className="absolute bottom-7 left-5 right-5 text-white">
-                     
-                        <LikeButton />
-                     
                       {/* Ketinggian */}
                       <h2 className="text-sm sm:text-base  font-normal ">{gunung.ketinggian}</h2>
                       {/* Gunung Name */}
