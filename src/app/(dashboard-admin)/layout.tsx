@@ -31,13 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="font-poppins bg-[#f5f5f5]">
-        <div className="w-full">
-        <Sidebar/>
+    <div className={`${poppins.variable} font-poppins antialiased bg-[#f5f5f5]`}>
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1 p-4">
+         {children}
         </div>
-        <main className="container">{children}</main>
-      </body>
-    </html>
+      </div>
+    </div>
   );
 }

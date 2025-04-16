@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import { FaMoneyBillWave } from "react-icons/fa"; // Import the money icon
 
 export default function Sidebar() {
+    const { logout, user } = useAuth();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
-
     return (
         <>
             {/* Mobile Menu Button */}
@@ -44,7 +46,7 @@ export default function Sidebar() {
 
             {/* Sidebar Container */}
             <div
-                className={`fixed -mt-8 z-40 left-9 w-full lg:w-[35%] lg:max-w-[400px] h-full transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen
+                className={`fixed z-40 top-24 left-9 w-full lg:w-[35%] lg:max-w-[400px] h-full transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen
                     ? "translate-x-0 pr-16"
                     : "-translate-x-full lg:translate-x-0"
                     }`}
@@ -53,16 +55,17 @@ export default function Sidebar() {
                     {/* Content is always visible on desktop, only shown when menu is open on mobile/tablet */}
                     <div className={`${isMobileMenuOpen ? "block" : "hidden lg:block"}`}>
                         <div className="bg-white rounded-[24px] p-4 shadow-md mb-4 ">
+
                             {/* User Info Section */}
                             <div className="flex items-start gap-3 mb-4">
                                 <div className="w-12 h-12 bg-[#809CFF] rounded-full flex items-center justify-center text-white text-xl">
-                                    SB
+                                    {user?.nama_depan?.charAt(0)}{user?.nama_belakang?.charAt(0)}
                                 </div>
                                 <div>
                                     <h2 className="text-[#2D3648] font-medium">
-                                        Summit Bin Ahmad
+                                        {user?.nama_depan} {user?.nama_belakang}
                                     </h2>
-                                    <p className="text-[#6B7280] text-sm">Belum Lengkap</p>
+                                    <p className="text-[#6B7280] text-sm">{user?.email}</p>
                                 </div>
                             </div>
 
@@ -71,16 +74,16 @@ export default function Sidebar() {
                             {/* Navigation Section */}
                             <nav className="space-y-1 mb-4">
                                 <Link
-                                    href="admin"
+                                    href="/admin"
                                     className="flex items-center gap-3 p-2  text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 10.6667H28M19.3333 10.6667V26.5556M26.5556 28H3.44444C3.06135 28 2.69395 27.8478 2.42307 27.5769C2.15218 27.306 2 26.9386 2 26.5556V3.44444C2 3.06135 2.15218 2.69395 2.42307 2.42307C2.69395 2.15218 3.06135 2 3.44444 2H26.5556C26.9386 2 27.306 2.15218 27.5769 2.42307C27.8478 2.69395 28 3.06135 28 3.44444V26.5556C28 26.9386 27.8478 27.306 27.5769 27.5769C27.306 27.8478 26.9386 28 26.5556 28Z" stroke="black" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M2 10.6667H28M19.3333 10.6667V26.5556M26.5556 28H3.44444C3.06135 28 2.69395 27.8478 2.42307 27.5769C2.15218 27.306 2 26.9386 2 26.5556V3.44444C2 3.06135 2.15218 2.69395 2.42307 2.42307C2.69395 2.15218 3.06135 2 3.44444 2H26.5556C26.9386 2 27.306 2.15218 27.5769 2.42307C27.8478 2.69395 28 3.06135 28 3.44444V26.5556C28 26.9386 27.8478 27.306 27.5769 27.5769C27.306 27.8478 26.9386 28 26.5556 28Z" stroke="black" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                     Dashboard
                                 </Link>
                                 <Link
-                                    href="penyedia-trip"
+                                    href="/admin/penyedia-trip"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +94,7 @@ export default function Sidebar() {
                                     Penyedia Trip
                                 </Link>
                                 <Link
-                                    href="kelola-gunung"
+                                    href="/admin/kelola-gunung"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 29 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,12 +105,12 @@ export default function Sidebar() {
                                     Kelola Gunung
                                 </Link>
                                 <Link
-                                    href="kelolah-berita"
+                                    href="/admin/kelolah-berita"
                                     className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                                 >
                                     <svg width="20" height="20" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M24.4 18.2V9.80002C24.4 5.84082 24.4 3.85982 23.1694 2.63062C21.9402 1.40002 19.9592 1.40002 16 1.40002H10.4C6.4408 1.40002 4.4598 1.40002 3.2306 2.63062C2 3.85982 2 5.84082 2 9.80002V18.2C2 22.1592 2 24.1402 3.2306 25.3694C4.4598 26.6 6.4408 26.6 10.4 26.6H27.2M7.6 8.40002H18.8M7.6 14H18.8M7.6 19.6H13.2" stroke="black" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M24.4004 8.40002H25.8004C27.78 8.40002 28.7698 8.40002 29.3844 9.01602C30.0004 9.63062 30.0004 10.6204 30.0004 12.6V23.8C30.0004 24.5426 29.7054 25.2548 29.1803 25.7799C28.6552 26.305 27.943 26.6 27.2004 26.6C26.4578 26.6 25.7456 26.305 25.2205 25.7799C24.6954 25.2548 24.4004 24.5426 24.4004 23.8V8.40002Z" stroke="black" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M24.4 18.2V9.80002C24.4 5.84082 24.4 3.85982 23.1694 2.63062C21.9402 1.40002 19.9592 1.40002 16 1.40002H10.4C6.4408 1.40002 4.4598 1.40002 3.2306 2.63062C2 3.85982 2 5.84082 2 9.80002V18.2C2 22.1592 2 24.1402 3.2306 25.3694C4.4598 26.6 6.4408 26.6 10.4 26.6H27.2M7.6 8.40002H18.8M7.6 14H18.8M7.6 19.6H13.2" stroke="black" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M24.4004 8.40002H25.8004C27.78 8.40002 28.7698 8.40002 29.3844 9.01602C30.0004 9.63062 30.0004 10.6204 30.0004 12.6V23.8C30.0004 24.5426 29.7054 25.2548 29.1803 25.7799C28.6552 26.305 27.943 26.6 27.2004 26.6C26.4578 26.6 25.7456 26.305 25.2205 25.7799C24.6954 25.2548 24.4004 24.5426 24.4004 23.8V8.40002Z" stroke="black" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
 
 
@@ -120,10 +123,16 @@ export default function Sidebar() {
                                     <svg width="20" height="20" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M14.5 29.4014C11.1167 29.4014 8.12268 28.3745 5.51806 26.3209C2.91343 24.2673 1.22176 21.6422 0.443056 18.4458C0.335648 18.043 0.416204 17.6741 0.684722 17.339C0.953241 17.0039 1.31574 16.8089 1.77222 16.7541C2.20185 16.7004 2.5912 16.781 2.94028 16.9958C3.28935 17.2106 3.53102 17.5328 3.66528 17.9625C4.30972 20.3791 5.63889 22.3528 7.65278 23.8833C9.66667 25.4139 11.9491 26.1791 14.5 26.1791C17.6417 26.1791 20.307 25.0852 22.4959 22.8973C24.6849 20.7094 25.7788 18.0441 25.7778 14.9014C25.7767 11.7586 24.6828 9.09385 22.4959 6.90703C20.3091 4.72022 17.6438 3.62574 14.5 3.62359C12.6472 3.62359 10.9153 4.05322 9.30416 4.91248C7.69305 5.77174 6.33704 6.95322 5.23611 8.45692H8.05555C8.51204 8.45692 8.89494 8.61159 9.20428 8.92092C9.51361 9.23025 9.66774 9.61262 9.66667 10.068C9.66559 10.5234 9.51092 10.9063 9.20267 11.2168C8.89441 11.5272 8.51204 11.6813 8.05555 11.6791H1.61111C1.15463 11.6791 0.772259 11.5245 0.464 11.2151C0.155741 10.9058 0.00107407 10.5234 0 10.068V3.62359C0 3.16711 0.154667 2.78474 0.464 2.47648C0.773333 2.16822 1.1557 2.01355 1.61111 2.01248C2.06652 2.0114 2.44943 2.16607 2.75983 2.47648C3.07024 2.78689 3.22437 3.16926 3.22222 3.62359V5.79859C4.59167 4.08007 6.26346 2.7509 8.23761 1.81109C10.2118 0.871274 12.2992 0.401367 14.5 0.401367C16.5139 0.401367 18.4005 0.784275 20.1598 1.55009C21.9192 2.3159 23.4497 3.34916 24.7515 4.64987C26.0533 5.95057 27.0871 7.48112 27.8529 9.24153C28.6187 11.0019 29.0011 12.8885 29 14.9014C28.9989 16.9142 28.6166 18.8008 27.8529 20.5612C27.0892 22.3216 26.0554 23.8522 24.7515 25.1529C23.4476 26.4536 21.917 27.4874 20.1598 28.2542C18.4026 29.0211 16.516 29.4035 14.5 29.4014ZM16.1111 14.2569L20.1389 18.2847C20.4343 18.5801 20.5819 18.956 20.5819 19.4125C20.5819 19.869 20.4343 20.2449 20.1389 20.5402C19.8435 20.8356 19.4676 20.9833 19.0111 20.9833C18.5546 20.9833 18.1787 20.8356 17.8833 20.5402L13.3722 16.0291C13.2111 15.868 13.0903 15.687 13.0097 15.4862C12.9292 15.2853 12.8889 15.077 12.8889 14.8611V8.45692C12.8889 8.00044 13.0436 7.61807 13.3529 7.30981C13.6622 7.00155 14.0446 6.84688 14.5 6.84581C14.9554 6.84474 15.3383 6.9994 15.6487 7.30981C15.9591 7.62022 16.1133 8.00259 16.1111 8.45692V14.2569Z" fill="black" />
                                     </svg>
-
-
-
                                     Trip
+                                </Link>
+                                 
+                                {/* New Withdrawals Management Link */}
+                                <Link
+                                    href="/admin/withdrawals"
+                                    className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
+                                >
+                                    <FaMoneyBillWave size={20} />
+                                    Penarikan Dana
                                 </Link>
                             </nav>
 
@@ -131,8 +140,11 @@ export default function Sidebar() {
 
                             {/* Logout Section */}
                             <nav className="space-y-2">
-                                
-                                <button className="flex w-full items-center gap-3 p-2 text-red-500 hover:bg-gray-50 rounded-xl">
+
+                                <button className="flex w-full items-center gap-3 p-2 text-red-500 hover:bg-gray-50 rounded-xl"
+                                    onClick={logout}
+                                >
+
                                     <svg
                                         width="20"
                                         height="20"
@@ -154,9 +166,7 @@ export default function Sidebar() {
 
                             {/* CTA Button */}
                         </div>
-                        <button className="w-full mt-1 bg-[#4A90E2] text-white rounded-[24px] py-2 hover:bg-blue-600 transition-colors">
-                            Jadi Penyedia Jasa
-                        </button>
+
                     </div>
                 </div>
             </div>

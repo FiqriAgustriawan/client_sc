@@ -7,7 +7,7 @@ function Footer() {
       <div className="w-full px-8 mx-auto max-w-7xl">
         <div className="grid justify-between grid-cols-1 gap-4 md:grid-cols-2">
           <h5 className="mb-6 text-xl font-semibold text-slate-800">
-            Development by Intech
+            Development Rumduk 
           </h5>
           <div className="grid justify-between grid-cols-3 gap-4">
             <ul>

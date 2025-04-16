@@ -2,9 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Sidebar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { logout, user } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -44,7 +54,7 @@ export default function Sidebar() {
 
       {/* Sidebar Container */}
       <div
-        className={`fixed mt-[87px] z-40 left-9 w-full lg:w-[35%] lg:max-w-[400px] h-full transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen
+        className={`fixed top-24 z-40 left-9 w-full lg:w-[35%] lg:max-w-[400px] h-full transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen
           ? "translate-x-0 pr-16"
           : "-translate-x-full lg:translate-x-0"
           }`}
@@ -56,22 +66,21 @@ export default function Sidebar() {
               {/* User Info Section */}
               <div className="flex items-start gap-3 mb-4">
                 <div className="w-12 h-12 bg-[#809CFF] rounded-full flex items-center justify-center text-white text-xl">
-                  SB
+                  {user?.nama_depan?.charAt(0)}{user?.nama_belakang?.charAt(0)}
                 </div>
                 <div>
                   <h2 className="text-[#2D3648] font-medium">
-                    Summit Bin Ahmad
+                    {user?.nama_depan} {user?.nama_belakang}
                   </h2>
-                  <p className="text-[#6B7280] text-sm">Belum Lengkap</p>
+                  <p className="text-[#6B7280] text-sm">{user?.email}</p>
                 </div>
               </div>
-
               <div className="h-px bg-gray-200 my-3"></div>
 
               {/* Navigation Section */}
               <nav className="space-y-1 mb-4">
                 <Link
-                  href="/trip"
+                  href="/index-jasa"
                   className="flex items-center gap-3 p-2  text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +90,7 @@ export default function Sidebar() {
                   Dashboard
                 </Link>
                 <Link
-                  href="trip-jasa"
+                  href="/index-jasa/trip-jasa"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg width="20" height="20" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,8 +100,31 @@ export default function Sidebar() {
                   Trip
                 </Link>
 
+                {/* New Earnings Link */}
                 <Link
-                  href="history"
+                  href="/index-jasa/earnings"
+                  className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 1V23M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6"
+                      stroke="black"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  Pendapatan
+                </Link>
+
+                <Link
+                  href="/index-jasa/history"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg
@@ -103,7 +135,7 @@ export default function Sidebar() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M14.5 29.4014C11.1167 29.4014 8.12268 28.3745 5.51806 26.3209C2.91343 24.2673 1.22176 21.6422 0.443056 18.4458C0.335648 18.043 0.416204 17.6741 0.684722 17.339C0.953241 17.0039 1.31574 16.8089 1.77222 16.7541C2.20185 16.7004 2.5912 16.781 2.94028 16.9958C3.28935 17.2106 3.53102 17.5328 3.66528 17.9625C4.30972 20.3791 5.63889 22.3528 7.65278 23.8833C9.66667 25.4139 11.9491 26.1791 14.5 26.1791C17.6417 26.1791 20.307 25.0852 22.4959 22.8973C24.6849 20.7094 25.7788 18.0441 25.7778 14.9014C25.7767 11.7586 24.6828 9.09385 22.4959 6.90703C20.3091 4.72022 17.6438 3.62574 14.5 3.62359C12.6472 3.62359 10.9153 4.05322 9.30416 4.91248C7.69305 5.77174 6.33704 6.95322 5.23611 8.45692H8.05555C8.51204 8.45692 8.89494 8.61159 9.20428 8.92092C9.51361 9.23025 9.66774 9.61262 9.66667 10.068C9.66559 10.5234 9.51092 10.9063 9.20267 11.2168C8.89441 11.5272 8.51204 11.6813 8.05555 11.6791H1.61111C1.15463 11.6791 0.772259 11.5245 0.464 11.2151C0.155741 10.9058 0.00107407 10.5234 0 10.068V3.62359C0 3.16711 0.154667 2.78474 0.464 2.47648C0.773333 2.16822 1.1557 2.01355 1.61111 2.01248C2.06652 2.0114 2.44943 2.16607 2.75983 2.47648C3.07024 2.78689 3.22437 3.16926 3.22222 3.62359V5.79859C4.59167 4.08007 6.26346 2.7509 8.23761 1.81109C10.2118 0.871274 12.2992 0.401367 14.5 0.401367C16.5139 0.401367 18.4005 0.784275 20.1598 1.55009C21.9192 2.3159 23.4497 3.34916 24.7515 4.64987C26.0533 5.95057 27.0871 7.48112 27.8529 9.24153C28.6187 11.0019 29.0011 12.8885 29 14.9014C28.9989 16.9142 28.6166 18.8008 27.8529 20.5612C27.0892 22.3216 26.0554 23.8522 24.7515 25.1529C23.4476 26.4536 21.917 27.4874 20.1598 28.2542C18.4026 29.0211 16.516 29.4035 14.5 29.4014ZM16.1111 14.2569L20.1389 18.2847C20.4343 18.5801 20.5819 18.956 20.5819 19.4125C20.5819 19.869 20.4343 20.2449 20.1389 20.5402C19.8435 20.8356 19.4676 20.9833 19.0111 20.9833C18.5546 20.9833 18.1787 20.8356 17.8833 20.5402L13.3722 16.0291C13.2111 15.868 13.0903 15.687 13.0097 15.4862C12.9292 15.2853 12.8889 15.077 12.8889 14.8611V8.45692C12.8889 8.00044 13.0436 7.61807 13.3529 7.30981C13.6622 7.00155 14.0446 6.84688 14.5 6.84581C14.9554 6.84474 15.3383 6.9994 15.6487 7.30981C15.9591 7.62022 16.1133 8.00259 16.1111 8.45692V14.2569Z"
+                      d="M14.5 29.4014C11.1167 29.4014 8.12268 28.3745 5.51806 26.3209C2.91343 24.2673 1.22176 21.6422 0.443056 18.4458C0.335648 18.043 0.416204 17.6741 0.684722 17.339C0.953241 17.0039 1.31574 16.8089 1.77222 16.7541C2.20185 16.7004 2.5912 16.781 2.94028 16.9958C3.28935 17.2106 3.53102 17.5328 3.66528 17.9625C4.30972 20.3791 5.63889 22.3528 7.65278 23.8833C9.66667 25.4139 11.9491 26.1791 14.5 26.1791C17.6417 26.1791 20.307 25.0852 22.4959 22.8973C24.6849 20.7094 25.7788 18.0441 25.7778 14.9014C25.7767 11.7586 24.6828 9.09385 22.4959 6.90703C20.3091 4.72022 17.6438 3.62574 14.5 3.62359C12.6472 3.62359 10.9153 4.05322 9.30416 4.91248C7.69305 5.77174 6.33704 6.95322 5.23611 8.45692H8.05555C8.51204 8.45692 8.89494 8.61159 9.20428 8.92092C9.51361 9.23025 9.66774 9.61262 9.66667 10.068C9.66559 10.5234 9.51092 10.9063 9.20267 11.2168C8.89441 11.5272 8.51204 11.6813 8.05555 11.6791H1.61111C1.15463 11.6791 0.772259 11.5245 0.464 11.2151C0.155741 10.9058 0.00107407 10.5234 0 10.068V3.62359C0 3.16711 0.154667 2.78474 0.464 2.47648C0.773333 2.16822 1.1557 2.01355 1.61111 2.01248C2.06652 2.0114 2.44943 2.16607 2.75983 2.47648C3.07024 2.78689 3.22437 3.16926 3.22222 3.62359V5.79859C4.59167 4.08007 6.26346 2.7509 8.23761 1.81109C10.2118 0.871274 12.2992 0.401367 14.5 0.401367C16.5139 0.401367 18.4005 0.784275 20.1598 1.55009C21.9192 2.3159 23.4497 3.34916 24.7515 4.64987C26.0533 5.95057 27.0871 7.48112 27.8529 9.24153C28.6187 11.0019 29 14.9014 28.9989 16.9142 28.6166 18.8008 27.8529 20.5612C27.0892 22.3216 26.0554 23.8522 24.7515 25.1529C23.4476 26.4536 21.917 27.4874 20.1598 28.2542C18.4026 29.0211 16.516 29.4035 14.5 29.4014ZM16.1111 14.2569L20.1389 18.2847C20.4343 18.5801 20.5819 18.956 20.5819 19.4125C20.5819 19.869 20.4343 20.2449 20.1389 20.5402C19.8435 20.8356 19.4676 20.9833 19.0111 20.9833C18.5546 20.9833 18.1787 20.8356 17.8833 20.5402L13.3722 16.0291C13.2111 15.868 13.0903 15.687 13.0097 15.4862C12.9292 15.2853 12.8889 15.077 12.8889 14.8611V8.45692C12.8889 8.00044 13.0436 7.61807 13.3529 7.30981C13.6622 7.00155 14.0446 6.84688 14.5 6.84581C14.9554 6.84474 15.3383 6.9994 15.6487 7.30981C15.9591 7.62022 16.1133 8.00259 16.1111 8.45692V14.2569Z"
                       fill="black"
                     />
                   </svg>
@@ -116,7 +148,7 @@ export default function Sidebar() {
               {/* Profile and Logout Section */}
               <nav className="space-y-2">
                 <Link
-                  href="/profile"
+                  href="/index-jasa/profile"
                   className="flex items-center gap-3 p-2 text-[#2D3648] hover:bg-gray-50 rounded-xl"
                 >
                   <svg
@@ -141,7 +173,11 @@ export default function Sidebar() {
                   </svg>
                   Profil
                 </Link>
-                <button className="flex w-full items-center gap-3 p-2 text-red-500 hover:bg-gray-50 rounded-xl">
+                {/* Update the logout button */}
+                <button
+                  onClick={handleLogout}
+                  className="flex w-full items-center gap-3 p-2 text-red-500 hover:bg-gray-50 rounded-xl"
+                >
                   <svg
                     width="20"
                     height="20"
@@ -163,9 +199,6 @@ export default function Sidebar() {
 
               {/* CTA Button */}
             </div>
-            <button className="w-full mt-1 bg-[#4A90E2] text-white rounded-[24px] py-2 hover:bg-blue-600 transition-colors">
-              Jadi Penyedia Jasa
-            </button>
           </div>
         </div>
       </div>

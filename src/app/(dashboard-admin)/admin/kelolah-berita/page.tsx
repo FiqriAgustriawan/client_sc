@@ -6,11 +6,11 @@ import Link from "next/link";
 export default function HistoryTrip() {
   
   return (
-    <div className="bg-white p-4 sm:p-6 w-full max-w-[95%] sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] xl:max-w-[66%] xl:mx-[29%] mt-8 sm:mt-12 md:mt-16 md:mx-[15%] sm:mx-[5%] mx-5 lg:mt-20 lg:mx-[35%] shadow-lg rounded-3xl">
+    <div className="bg-white p-4 md:p-6 w-full max-w-[90%] sm:max-w-[85%] md:max-w-[75%] lg:max-w-[60%] xl:mt-[7%] lg:mt-[10%] xl:max-w-[66%] xl:mx-[29%] lg:mx-96 mx-auto md:mx-[13%] md:mt-[7%] shadow-lg rounded-3xl mt-20">
 
       <div className="flex justify-between mb-6 w-full pt-3">
         <h1 className="text-xl sm:text-2xl font-semibold">Kelola Berita</h1>
-        <Link href={'tambah-berita'} className="text-md text-[#0066FF] font-semibold">
+        <Link href="/admin/kelolah-berita/tambah-berita" className="text-md text-[#0066FF] font-semibold">
           + Tambah Berita
         </Link>
       </div>

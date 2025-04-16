@@ -1,22 +1,37 @@
-// app/login/layout.tsx
+import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
-// import "./globals.css";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
-  title: "Login - SummitCess",
-  description: "Login to SummitCess and explore mountain adventures",
+  title: "SummitCess - Mountain Adventures",
+  description: "Explore mountain peaks and find yourself with SummitCess",
+  icons: [
+    {
+      rel: 'icon',
+      url: '/LogoProduct.svg', 
+      type: 'image/svg+xml',
+    },
+  ],
 };
 
-export default function LoginLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="font-poppins antialiased bg-[#f5f5f5]">
-        <main>{children}</main>
-      </body>
-    </html>
+    <div className={`${poppins.variable} font-poppins antialiased bg-[#f5f5f5] min-h-screen`}>
+      <div className="flex justify-center items-center min-h-screen">
+        {children}
+        <Toaster/>
+      </div>
+    </div>
   );
 }
