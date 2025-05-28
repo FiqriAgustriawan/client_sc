@@ -1,0 +1,68 @@
+/* Add these styles to your global CSS */
+
+/* Hide scrollbars for cleaner look */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Hide scrollbars on mobile components */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Safe area padding for notched phones */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1.5rem);
+}
+
+/* Custom datepicker styling for mobile */
+.react-datepicker--mobile .react-datepicker__month-container {
+  width: 100%;
+}
+
+.react-datepicker--mobile .react-datepicker__day {
+  width: 2rem;
+  line-height: 2rem;
+  margin: 0.2rem;
+}
+
+.react-datepicker--mobile .react-datepicker__day-name {
+  width: 2.5rem;
+  line-height: 2.5rem;
+  margin: 0.2rem;
+}
+
+.react-datepicker--mobile .react-datepicker__header {
+  padding-top: 0.8rem;
+}
+
+.react-datepicker--mobile .react-datepicker__current-month {
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Prevent text selection on interactive elements */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Add fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-in-out;
+}

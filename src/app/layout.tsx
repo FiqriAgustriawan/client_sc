@@ -7,6 +7,9 @@ import { AuthProvider } from '@/context/AuthContext';
 import { usePathname } from 'next/navigation';
 import { Toaster } from 'react-hot-toast';
 import { paymentConfig } from '@/config/payment';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -15,32 +18,37 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
   // Hide navbar on guide registration, login, and register pages
-  const hideNavbar = pathname?.includes('/daftar-guide') || 
-                    pathname?.includes('/login') || 
-                    pathname?.includes('/register') ||
-                    pathname?.includes('/gunung/') ||
-                    pathname?.includes('/dashboard-user') ||
-                    pathname?.includes('/trips/');
+  const hideNavbar = pathname?.includes('/daftar-guide') ||
+    pathname?.includes('/login') ||
+    pathname?.includes('/register') ||
+    pathname?.includes('/gunung') ||
+    pathname?.includes('/dashboard-user') ||
+    pathname?.includes('/index-jasa') ||
+    pathname?.includes('/admin') ||
+    pathname?.includes('/dashboard/invoice') ||
+    pathname?.includes('/trips/');
 
   return (
     <html lang="en">
       <head>
-        <script 
+        <script
           type="text/javascript"
           src={paymentConfig.snapUrl}
           data-client-key={paymentConfig.clientKey}
           async
         />
       </head>
-      <body className="font-poppins antialiased bg-[#f5f5f5]">
+      <body className="bg-white antialiased">
         <Toaster position="top-right" />
         <AuthProvider>
-          {!hideNavbar && (
-            <div className="w-full absolute z-50">
-              <Navbar />
-            </div>
-          )}
-          <main className="">{children}</main>
+          <QueryClientProvider client={queryClient}>
+            {!hideNavbar && (
+              <div className="w-full absolute z-50">
+                <Navbar />
+              </div>
+            )}
+            <main className="">{children}</main>
+          </QueryClientProvider>
         </AuthProvider>
       </body>
     </html>

@@ -79,23 +79,18 @@ export const bookingService = {
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`
       }
       
-      // First check if payment is already completed on Midtrans
-      const checkResponse = await api.get(`/api/bookings/${bookingId}/payment-status`)
+      // Request the payment URL directly
+      const response = await api.post(`/api/bookings/${bookingId}/payment-url`)
+      console.log('Payment URL response:', response.data)
       
-      if (checkResponse.data.success && checkResponse.data.status === 'settlement') {
-        // If payment is already settled on Midtrans, update local status
-        const updateResponse = await api.post(`/api/bookings/${bookingId}/update-payment-status`, {
-          status: 'paid'
-        })
-        return updateResponse.data
-      } else {
-        // If not settled, get a new payment URL
-        const response = await api.post(`/api/bookings/${bookingId}/payment-url`)
-        return response.data
-      }
+      // Return the complete response for processing in the component
+      return response.data
     } catch (error) {
       console.error('Error handling payment completion:', error)
-      return { success: false, message: error.response?.data?.message || 'Failed to process payment' }
+      return { 
+        success: false, 
+        message: error.response?.data?.message || 'Failed to process payment' 
+      }
     }
   },
   
