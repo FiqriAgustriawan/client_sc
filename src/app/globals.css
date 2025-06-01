@@ -1,31 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Better font loading performance - preload instead of @import */
+/* Remove this line:
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(1);
-    opacity: 1;
-  }
-}
-
-.animate-slideUp {
-  animation: slideUp 0.3s ease-out;
-}
-
-:root {
-  --foreground-rgb: 51, 51, 51;
-  --background-start-rgb: 245, 245, 245;
-  --background-end-rgb: 255, 255, 255;
-}
+*/
 
 :root {
   --font-poppins: "Poppins", sans-serif;
+  --foreground-rgb: 51, 51, 51;
+  --background-start-rgb: 245, 245, 245;
+  --background-end-rgb: 255, 255, 255;
 }
 
 body {
@@ -397,4 +383,32 @@ a {
   background-color: #3b82f6 !important;
   border-radius: 50%;
   color: white;
+}
+
+/* Apply Poppins to all elements to ensure consistency */
+@layer base {
+  html,
+  body,
+  input,
+  button,
+  textarea,
+  select,
+  option {
+    font-family: var(--font-poppins);
+  }
+
+  /* Override any elements that might have different fonts */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  li,
+  div {
+    font-family: var(--font-poppins) !important;
+  }
 }

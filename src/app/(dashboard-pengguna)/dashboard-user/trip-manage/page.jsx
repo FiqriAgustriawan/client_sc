@@ -202,6 +202,21 @@ export default function TripManagePage() {
     return "bg-gray-100 text-gray-700";
   };
 
+  // Function untuk membuka WhatsApp
+  const openWhatsApp = (phoneNumber, tripName) => {
+    if (!phoneNumber) {
+      toast.error("Nomor WhatsApp tidak tersedia");
+      return;
+    }
+    
+    const cleanNumber = phoneNumber.replace(/\D/g, "");
+    const message = encodeURIComponent(
+      `Halo, saya ingin bertanya tentang trip ${tripName}. Terima kasih.`
+    );
+    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -216,17 +231,13 @@ export default function TripManagePage() {
     try {
       const response = await bookingService.handleCompletePayment(bookingId);
       console.log("Payment completion response:", response);
-      // Check if we received a payment URL
       if (response.payment_url) {
-        // Redirect to the payment page
         console.log("Redirecting to payment URL:", response.payment_url);
         window.location.href = response.payment_url;
       } else if (response.is_paid) {
-        // If payment is already completed
         toast.success("Pembayaran sudah diselesaikan sebelumnya!");
-        fetchActiveBookings(); // Refresh the data
+        fetchActiveBookings();
       } else {
-        // If success but no URL (shouldn't normally happen)
         toast.success(response.message || "Status pembayaran diperbarui!");
         fetchActiveBookings();
       }
@@ -408,25 +419,11 @@ export default function TripManagePage() {
                           {booking.trip?.mountain?.lokasi || "Location"}
                         </span>
                       </div>
-
-                      {booking.trip?.whatsapp_group && (
-                        <a
-                          href={booking.trip.whatsapp_group}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-green-600 hover:text-green-700"
-                        >
-                          <FaWhatsapp />
-                          <span>Grup WhatsApp</span>
-                        </a>
-                      )}
                     </div>
 
                     <div className="flex flex-wrap gap-3">
                       {booking.status === "confirmed" && (
-                        <Link
-                          href={`/dashboard-user/trip-manage/${booking.trip_id}`}
-                        >
+                        <Link href={`/dashboard-user/trip-manage/${booking.trip_id}`}>
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -451,31 +448,30 @@ export default function TripManagePage() {
                         </Link>
                       )}
 
-                      {booking.payment &&
-                        booking.payment.status === "pending" && (
-                          <motion.button
-                            onClick={() => handleCompletePayment(booking.id)}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors"
-                          >
-                            Selesaikan Pembayaran
-                          </motion.button>
-                        )}
-
-                      {/* Tombol untuk menuju ke halaman chat dengan guide */}
-                      {booking.status === "confirmed" && (
-                        <Link
-                          href={`/dashboard-user/trip-manage/${booking.trip_id}/chat`}
+                      {booking.payment && booking.payment.status === "pending" && (
+                        <motion.button
+                          onClick={() => handleCompletePayment(booking.id)}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors"
                         >
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors"
-                          >
-                            Chat dengan Guide
-                          </motion.button>
-                        </Link>
+                          Selesaikan Pembayaran
+                        </motion.button>
+                      )}
+
+                      {/* UPDATED: Tombol Grup WhatsApp - mengganti Chat Guide */}
+                      {booking.status === "confirmed" && booking.trip?.whatsapp_group && (
+                        <motion.button
+                          onClick={() => {
+                            window.open(booking.trip.whatsapp_group, "_blank");
+                          }}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors flex items-center gap-2"
+                        >
+                          <FaWhatsapp />
+                          <span>Grup WhatsApp</span>
+                        </motion.button>
                       )}
                     </div>
 
@@ -500,7 +496,7 @@ export default function TripManagePage() {
   );
 }
 
-// Countdown timer component
+// Countdown timer component (tetap sama)
 function TripCountdown({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -537,7 +533,6 @@ function TripCountdown({ targetDate }) {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  // Format dengan leading zero
   const formatNumber = (num) => String(num).padStart(2, "0");
 
   return (

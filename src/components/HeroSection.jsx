@@ -563,26 +563,27 @@ const HeroImage = () => {
 
   // Desktop design from DesktopHeroSection.jsx
   return (
-    <div
-      className="relative bg-gradient-to-b from-[#516be2] to-[#8DB7FF]"
-      style={{ height: "95vh" }}
-    >
+    <div className="relative h-screen bg-[#4a75e4] overflow-hidden ">
+      {/* Background Image with overlay */}
       <Image
         src={HeroGunung}
         alt="Mountain landscape"
-        className="w-full h-full mt-64"
-        fill
-        sizes=""
+        width={1920}
+        height={1080}
         priority
+        quality={85}
+        className=" w-full h-[1080px] mt-64  object-cover " // Reduced height while keeping full width
       />
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white pt-10">
-        {/* Updated heading to match Figma - larger text, better spacing */}
+
+      {/* Hero Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+        {/* Hero Text */}
         <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold max-w-5xl mx-auto leading-tight text-center mb-6 px-4">
           Setiap Langkah Membawa Anda Menuju Puncak Impian
         </h1>
 
-        {/* Updated paragraph spacing and line breaks to match Figma */}
-        <div className="max-w-4xl mx-auto text-center ">
+        {/* Subtitle text */}
+        <div className="max-w-4xl mx-auto text-center">
           <p className="text-base sm:text-lg md:text-xl lg:text-xl font-normal leading-normal">
             Gabung bersama kami untuk pengalaman pendakian yang aman, seru, dan
             tak terlupakan.
@@ -592,24 +593,17 @@ const HeroImage = () => {
           </p>
         </div>
 
-        {/* Search/Filter Component - Updated styling to match Figma */}
-        <div className="absolute bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 w-full max-w-[750px] px-4">
-          <div className="bg-white rounded-full shadow-lg flex md:flex-row items-center overflow-hidden">
-            {/* Status Pendaki - Clickable WITH dropdown */}
+        {/* Search/Filter Component */}
+        <div className="absolute bottom-20 md:bottom-32 left-1/2 transform -translate-x-1/2 w-full max-w-[600px] px-4">
+          <div className="bg-white rounded-full shadow-lg flex items-center overflow-hidden">
+            {/* Status Pendaki */}
             <div className="flex-1 border-r border-gray-200 relative">
               <div
-                className="flex items-center space-x-3 px-5 py-5 w-full cursor-pointer hover:bg-gray-50"
+                className="flex items-center px-5 py-4 cursor-pointer hover:bg-gray-50"
                 onClick={() => setShowLevelDropdown((prev) => !prev)}
               >
-                <div className="bg-blue-100 p-3 rounded-full flex items-center justify-center">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-blue-500"
-                  >
+                <div className="text-blue-500 mr-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
                       stroke="currentColor"
@@ -627,12 +621,8 @@ const HeroImage = () => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-base font-semibold text-gray-900">
-                    Status Pendaki
-                  </p>
-                  <p className="text-sm font-normal text-gray-600">
-                    {selectedLevel.label}
-                  </p>
+                  <p className="text-gray-500 text-sm">Status Pendaki</p>
+                  <p className="text-gray-900 font-medium">Pemula</p>
                 </div>
                 <svg
                   width="16"
@@ -640,9 +630,7 @@ const HeroImage = () => {
                   viewBox="0 0 16 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className={`text-gray-400 transition-transform ${
-                    showLevelDropdown ? "rotate-180" : ""
-                  }`}
+                  className="text-gray-400"
                 >
                   <path
                     d="M4 6L8 10L12 6"
@@ -673,23 +661,14 @@ const HeroImage = () => {
               )}
             </div>
 
-            {/* Tanggal Mendaki Dropdown - Clickable */}
+            {/* Tanggal Mendaki */}
             <div ref={datePickerRef} className="relative flex-1">
-              <button
-                className="flex items-center space-x-3 px-5 py-5 w-full text-left cursor-pointer hover:bg-gray-50"
-                onClick={() => {
-                  setShowDatePicker(!showDatePicker);
-                }}
+              <div
+                className="flex items-center px-5 py-4 cursor-pointer hover:bg-gray-50"
+                onClick={() => setShowDatePicker(!showDatePicker)}
               >
-                <div className="bg-blue-100 p-3 rounded-full flex items-center justify-center">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-blue-500"
-                  >
+                <div className="text-blue-500 mr-3">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M8 2V5"
                       stroke="currentColor"
@@ -725,11 +704,9 @@ const HeroImage = () => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-base font-semibold text-gray-900">
-                    Tanggal Mendaki
-                  </p>
-                  <p className="text-sm font-normal text-gray-600">
-                    {format(selectedDate, "dd/MM/yyyy")}
+                  <p className="text-gray-500 text-sm">Tanggal Mendaki</p>
+                  <p className="text-gray-900 font-medium">
+                    {format(selectedDate, "dd / MM / yyyy")}
                   </p>
                 </div>
                 <svg
@@ -738,9 +715,7 @@ const HeroImage = () => {
                   viewBox="0 0 16 16"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className={`text-gray-400 transition-transform ${
-                    showDatePicker ? "rotate-180" : ""
-                  }`}
+                  className="text-gray-400"
                 >
                   <path
                     d="M4 6L8 10L12 6"
@@ -750,7 +725,7 @@ const HeroImage = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </button>
+              </div>
             </div>
 
             {/* Submit Button - Arrow icon */}
@@ -787,7 +762,7 @@ const HeroImage = () => {
         </div>
       </div>
 
-      {/* Floating DatePicker (rendered at the root level to avoid stacking context issues) */}
+      {/* Floating DatePicker */}
       {showDatePicker && !isMobile && (
         <div
           className="fixed inset-0 z-[999] flex items-start justify-center pt-32"

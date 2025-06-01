@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { useParams } from "next/navigation"; // Tambahkan impor ini
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { tripService } from "@/services/tripService";
 import { bookingService } from "@/services/bookingService";
-import { chatService } from "@/services/chatService";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,41 +17,26 @@ import {
   FaInfoCircle,
   FaList,
   FaCheckCircle,
-  FaDownload,
   FaFileInvoice,
-  FaComments,
-  FaPaperPlane,
   FaClipboardList,
-  FaMapMarkedAlt,
   FaClock,
   FaMoneyBillWave,
   FaImages,
   FaChevronRight,
 } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 export default function TripDetail({ params: routeParams }) {
-  // Gunakan useParams untuk mendapatkan ID dari URL
   const params = useParams();
   const tripId = params.id || routeParams.id;
 
-  // State lainnya tetap sama
   const [trip, setTrip] = useState(null);
   const [booking, setBooking] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("info");
   const router = useRouter();
   const { user } = useAuth();
-
-  // Add state for chat functionality
-  const [unreadMessages, setUnreadMessages] = useState(0);
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-  const [isSendingMessage, setIsSendingMessage] = useState(false);
-  const [chatLoading, setChatLoading] = useState(false);
-  const [chatError, setChatError] = useState(null);
-  const messagesEndRef = useRef(null);
-  const chatChannelRef = useRef(null);
-  const [tripStatus, setTripStatus] = useState("upcoming"); // upcoming, ongoing, completed
+  const [tripStatus, setTripStatus] = useState("upcoming");
 
   // Fetch trip details and booking
   useEffect(() => {
@@ -64,12 +48,10 @@ export default function TripDetail({ params: routeParams }) {
           return;
         }
 
-        // Get trip details
         const tripResponse = await tripService.getTripDetail(tripId);
         if (tripResponse.success) {
           setTrip(tripResponse.data);
 
-          // Set trip status based on dates
           const today = new Date();
           const startDate = new Date(tripResponse.data.start_date);
           const endDate = new Date(tripResponse.data.end_date);
@@ -82,14 +64,12 @@ export default function TripDetail({ params: routeParams }) {
             setTripStatus("completed");
           }
 
-          // If trip is closed/completed, redirect to rating page
           if (tripResponse.data.status === "closed") {
             router.push(`/dashboard-user/trip-manage/${tripId}/rating`);
             return;
           }
         }
 
-        // Get user bookings to find the booking for this trip
         const bookingsResponse = await bookingService.getUserBookings();
         if (bookingsResponse.success) {
           const tripBooking = bookingsResponse.data.find(
@@ -98,7 +78,6 @@ export default function TripDetail({ params: routeParams }) {
           if (tripBooking) {
             setBooking(tripBooking);
           } else {
-            // If no booking found, redirect to trips page
             router.push("/trips");
           }
         }
@@ -115,367 +94,6 @@ export default function TripDetail({ params: routeParams }) {
     fetchTripDetail();
   }, [tripId, router]);
 
-  // Fetch unread messages count
-  useEffect(() => {
-    const fetchUnreadCount = async () => {
-      try {
-        if (trip && trip.guide && user) {
-          const response = await chatService.getUnreadCount();
-          if (response.success) {
-            setUnreadMessages(response.data.count || 0);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching unread count:", error);
-      }
-    };
-
-    fetchUnreadCount();
-
-    // Set interval to check for new messages periodically
-    const intervalId = setInterval(fetchUnreadCount, 30000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [trip, user]);
-
-  // Handle chat tab functionality
-  useEffect(() => {
-    // Only load messages when chat tab is active
-    if (activeTab === "chat" && trip && user) {
-      const loadMessages = async () => {
-        try {
-          setChatLoading(true);
-          setChatError(null);
-
-          // Simpan activeTab ke localStorage untuk persistensi
-          localStorage.setItem(`user_active_tab_${tripId}`, "chat");
-
-          // Pengambilan guide user ID tetap sama
-          let guideUserId = null;
-          if (trip.guide) {
-            if (typeof trip.guide.user_id !== "undefined") {
-              guideUserId = trip.guide.user_id;
-            } else if (typeof trip.guide.id !== "undefined") {
-              guideUserId = trip.guide.id;
-            }
-          }
-
-          // Jika masih tidak ada guideUserId, coba ambil dari guide_id trip
-          if (!guideUserId && trip.guide_id) {
-            // Fallback menggunakan guide_id trip
-            guideUserId = trip.guide_id;
-            console.log("Using fallback guide_id:", guideUserId);
-          }
-
-          if (!guideUserId) {
-            console.error("Cannot find guide user ID");
-            setChatError(
-              "Tidak dapat menemukan ID Guide. Silakan coba lagi nanti."
-            );
-            setChatLoading(false);
-            return;
-          }
-
-          console.log("Using guide user ID:", guideUserId);
-          // PERBAIKAN: Tambahkan retry logic
-          let attempt = 0;
-          let success = false;
-
-          while (attempt < 3 && !success) {
-            try {
-              console.log(`Attempt ${attempt + 1} to load chat messages`);
-              const response = await chatService.getMessages(
-                tripId,
-                guideUserId
-              );
-
-              if (response && response.success) {
-                // Tambahkan guide_user_id dan user_id ke setiap pesan untuk pengiriman lokal
-                const messages = (response.data || []).map((msg) => ({
-                  ...msg,
-                  guide_user_id: guideUserId,
-                  user_id: user.id,
-                }));
-
-                setMessages(messages);
-                setUnreadMessages(0);
-                scrollToBottom();
-                success = true;
-              } else {
-                throw new Error("Invalid response");
-              }
-            } catch (err) {
-              console.error(`Attempt ${attempt + 1} failed:`, err);
-              attempt++;
-              if (attempt < 3) {
-                await new Promise((r) => setTimeout(r, 1000));
-              }
-            }
-          }
-
-          if (!success) {
-            console.error("All attempts to load messages failed");
-            setChatError(
-              "Gagal memuat pesan setelah beberapa percobaan. Silakan coba lagi."
-            );
-          }
-        } catch (error) {
-          console.error("Error loading messages:", error);
-          setChatError("Terjadi kesalahan saat memuat pesan. Coba lagi nanti.");
-        } finally {
-          setChatLoading(false);
-        }
-      };
-
-      loadMessages();
-
-      // Polling function tetap sama
-      const pollingId = setInterval(() => {
-        if (activeTab === "chat") {
-          // Silently update messages (without showing loading state)
-          (async () => {
-            try {
-              if (!trip) return;
-
-              let guideUserId = null;
-              if (trip.guide) {
-                guideUserId = trip.guide.user_id || trip.guide.id;
-              } else if (trip.guide_id) {
-                guideUserId = trip.guide_id;
-              }
-
-              if (!guideUserId) return;
-
-              const response = await chatService.getMessages(
-                tripId,
-                guideUserId
-              );
-              if (response.success && Array.isArray(response.data)) {
-                // Update jika jumlah pesan berbeda atau ada pesan baru di response
-                if (response.data.length !== messages.length) {
-                  console.log("New messages detected via polling, updating...");
-                  setMessages(response.data);
-                  scrollToBottom();
-                } else {
-                  // Check if any new messages by comparing the latest message ID
-                  const latestCurrentMessage =
-                    messages.length > 0 ? messages[messages.length - 1] : null;
-                  const latestNewMessage =
-                    response.data.length > 0
-                      ? response.data[response.data.length - 1]
-                      : null;
-
-                  if (
-                    latestCurrentMessage &&
-                    latestNewMessage &&
-                    latestCurrentMessage.id !== latestNewMessage.id
-                  ) {
-                    console.log(
-                      "Different latest message detected, updating..."
-                    );
-                    setMessages(response.data);
-                    scrollToBottom();
-                  }
-                }
-              }
-            } catch (error) {
-              console.error("Error in chat polling:", error);
-              // Don't show error to user for background polling
-            }
-          })();
-        }
-      }, 5000); // Check every 5 seconds
-
-      return () => {
-        clearInterval(pollingId);
-      };
-    } else if (
-      activeTab !== "chat" &&
-      localStorage.getItem(`user_active_tab_${tripId}`) === "chat"
-    ) {
-      // Jika tab diubah dari chat, simpan perubahan ke localStorage
-      localStorage.setItem(`user_active_tab_${tripId}`, activeTab);
-    }
-  }, [activeTab, trip, user, tripId, messages.length]);
-
-  // Function to scroll to bottom of chat
-  const scrollToBottom = () => {
-    setTimeout(() => {
-      if (messagesEndRef.current) {
-        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100); // Slight delay to ensure DOM has updated
-  };
-
-  // Function untuk mengirim pesan
-
-  const handleSendMessage = async (e) => {
-    if (e) e.preventDefault();
-    if (!newMessage.trim() || isSendingMessage || !trip) return;
-
-    setIsSendingMessage(true);
-
-    // PERBAIKAN: Tambahkan pesan ke state terlebih dahulu (optimistic update)
-    const tempMessage = {
-      id: `temp-${Date.now()}`,
-      content: newMessage.trim(),
-      sender_id: user.id,
-      receiver_id: null, // akan diisi nanti
-      trip_id: tripId,
-      created_at: new Date().toISOString(),
-      is_read: false,
-      sender: {
-        id: user.id,
-        nama_depan: user.nama_depan || user.name?.split(" ")[0] || "Saya",
-        nama_belakang: user.nama_belakang || user.name?.split(" ")[1] || "",
-        profile_photo: user.profile_photo,
-      },
-      isTemp: true,
-    };
-
-    try {
-      // Dapatkan guide user ID
-      let guideUserId = null;
-      if (trip.guide) {
-        guideUserId = trip.guide.user_id || trip.guide.id;
-      }
-
-      // Fallback ke guide_id
-      if (!guideUserId && trip.guide_id) {
-        guideUserId = trip.guide_id;
-      }
-
-      if (!guideUserId) {
-        throw new Error("Tidak dapat menemukan ID Guide");
-      }
-
-      // Update temporary message with guide ID
-      tempMessage.receiver_id = guideUserId;
-      tempMessage.guide_user_id = guideUserId;
-      tempMessage.user_id = user.id;
-
-      // Add to message list immediately for UI responsiveness
-      setMessages((prev) => [...prev, tempMessage]);
-
-      // Clear input field immediately
-      setNewMessage("");
-
-      // Scroll to bottom
-      scrollToBottom();
-
-      const messageData = {
-        receiver_id: guideUserId,
-        trip_id: tripId,
-        content: tempMessage.content,
-        bypass: true,
-        guide_user_id: guideUserId, // Tambahan untuk emergency case
-        user_id: user.id, // Tambahan untuk emergency case
-      };
-
-      console.log("Sending message data:", messageData);
-
-      const response = await chatService.sendMessage(messageData);
-      console.log("Send message response:", response);
-
-      if (response.success) {
-        // Replace temp message with actual message from server
-        setMessages((prev) =>
-          prev.map((msg) => (msg.id === tempMessage.id ? response.data : msg))
-        );
-
-        // IMMEDIATELY poll for new messages to ensure consistency
-        setTimeout(async () => {
-          try {
-            const refreshResponse = await chatService.getMessages(
-              tripId,
-              guideUserId
-            );
-            if (refreshResponse.success) {
-              // Add guide_user_id and user_id to all messages
-              const messages = (refreshResponse.data || []).map((msg) => ({
-                ...msg,
-                guide_user_id: guideUserId,
-                user_id: user.id,
-              }));
-              setMessages(messages);
-            }
-          } catch (err) {
-            console.error("Error refreshing messages after send:", err);
-          }
-        }, 1000);
-      } else if (response.isLocalOnly) {
-        // Jika ini hanya pesan lokal, perbarui pesan dengan data yang disimpan lokal
-        setMessages((prev) =>
-          prev.map((msg) =>
-            msg.id === tempMessage.id
-              ? {
-                  ...response.data,
-                  isLocalOnly: true,
-                  isTemp: false,
-                }
-              : msg
-          )
-        );
-
-        // Simpan pesan ke localStorage sebagai fallback
-        const localMessages = JSON.parse(
-          localStorage.getItem(`chat_messages_${tripId}_${guideUserId}`) || "[]"
-        );
-        localMessages.push({
-          ...response.data,
-          isLocalOnly: true,
-          isTemp: false,
-        });
-        localStorage.setItem(
-          `chat_messages_${tripId}_${guideUserId}`,
-          JSON.stringify(localMessages)
-        );
-      } else {
-        // Jika gagal, tetap tampilkan pesan yang sudah ditambahkan tetapi tandai sebagai error
-        setMessages((prev) =>
-          prev.map((msg) =>
-            msg.id === tempMessage.id
-              ? { ...msg, isError: true, isTemp: false }
-              : msg
-          )
-        );
-
-        setChatError("Gagal mengirim pesan. Silakan coba lagi.");
-        setTimeout(() => setChatError(null), 3000);
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
-
-      // Update temp message to show error
-      setMessages((prev) =>
-        prev.map((msg) =>
-          msg.id === tempMessage.id
-            ? { ...msg, isError: true, isTemp: false }
-            : msg
-        )
-      );
-
-      setChatError(error.message || "Terjadi kesalahan saat mengirim pesan");
-      setTimeout(() => setChatError(null), 3000);
-    } finally {
-      setIsSendingMessage(false);
-    }
-  };
-
-  // Tambahkan tombol retry untuk pesan error
-  const handleRetrySendMessage = async (message) => {
-    // Remove the error message
-    setMessages((prev) => prev.filter((msg) => msg.id !== message.id));
-
-    // Set the message content to input field
-    setNewMessage(message.content);
-
-    // Focus the input field
-    document.querySelector("#messageInput")?.focus();
-  };
-
   const getImageUrl = (imagePath) => {
     if (!imagePath) return "/images/placeholder.jpg";
 
@@ -483,7 +101,6 @@ export default function TripDetail({ params: routeParams }) {
       return imagePath;
     }
 
-    // Clean path to handle any potential double slashes
     const cleanPath = imagePath.replace(/\/storage\/+/g, "/storage/");
 
     if (imagePath.includes("/storage/")) {
@@ -497,7 +114,28 @@ export default function TripDetail({ params: routeParams }) {
     }/storage/${imagePath}`;
   };
 
-  // Format price helper
+  // UPDATED: WhatsApp function with enhanced messaging
+  const openWhatsAppGuide = () => {
+    if (!trip?.guide?.whatsapp) {
+      toast.error("Nomor WhatsApp guide tidak tersedia");
+      return;
+    }
+    
+    const cleanNumber = trip.guide.whatsapp.replace(/\D/g, "");
+    const formattedDate = new Date(trip.start_date).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long", 
+      year: "numeric"
+    });
+    
+    const message = encodeURIComponent(
+      `Halo ${trip.guide?.name || "Guide"}! Saya ${user?.nama_depan || user?.name || "peserta"} yang terdaftar untuk trip ${trip.mountain?.nama_gunung || "pendakian"} pada tanggal ${formattedDate}. Mohon informasinya terkait persiapan dan detail trip. Terima kasih!`
+    );
+    
+    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   const formatPrice = (price) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -506,13 +144,11 @@ export default function TripDetail({ params: routeParams }) {
     }).format(price);
   };
 
-  // Format date helper
   const formatDate = (dateString) => {
     const options = { day: "numeric", month: "long", year: "numeric" };
     return new Date(dateString).toLocaleDateString("id-ID", options);
   };
 
-  // Calculate trip duration
   const calculateDuration = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -541,7 +177,7 @@ export default function TripDetail({ params: routeParams }) {
           </div>
           <h2 className="text-2xl font-bold mb-4">
             Trip tidak ditemukan atau belum dikonfirmasi
-          </h2>
+          </h2>f
           <p className="text-gray-600 mb-6">
             Silakan periksa kembali status pemesanan Anda atau hubungi customer
             service
@@ -561,11 +197,11 @@ export default function TripDetail({ params: routeParams }) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-6">
           <Link
-            href="/dashboard-user"
+            href="/dashboard-user/trip-manage"
             className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium"
           >
             <FaChevronLeft className="mr-2" />
-            Kembali ke Dashboard
+            Kembali ke Perjalanan Aktif
           </Link>
         </div>
 
@@ -648,26 +284,34 @@ export default function TripDetail({ params: routeParams }) {
           </div>
         </div>
 
-        {/* Main Content Section - Improved Layout */}
+        {/* Main Content Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            {/* Chat Button for Mobile */}
+            {/* UPDATED: WhatsApp Contact Buttons for Mobile */}
             <div className="lg:hidden mb-6">
-              <Link href={`/dashboard-user/trip-manage/${tripId}/chat`}>
-                <button className="w-full bg-white border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-4 rounded-xl shadow-sm font-medium flex items-center justify-center gap-3 transition-colors">
-                  <FaComments className="text-xl" />
-                  <span>Chat dengan Guide</span>
-                  {unreadMessages > 0 && (
-                    <div className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      {unreadMessages > 9 ? "9+" : unreadMessages}
-                    </div>
-                  )}
-                </button>
-              </Link>
+              <div className="grid grid-cols-1 gap-3">
+                {trip.whatsapp_group && (
+                  <button
+                    onClick={() => {
+                      window.open(trip.whatsapp_group, "_blank");
+                    }}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl shadow-md font-medium flex items-center justify-center gap-3 transition-all hover:scale-105"
+                  >
+                    <FaWhatsapp className="text-xl" />
+                    <span>Gabung Grup WhatsApp</span>
+                  </button>
+                )}
+                
+                {!trip.whatsapp_group && (
+                  <div className="w-full bg-gray-100 text-gray-500 px-6 py-4 rounded-xl text-center">
+                    <span>Grup WhatsApp belum tersedia</span>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
-              {/* Improved Tab Navigation - Fixed Width Tabs */}
+              {/* Tab Navigation */}
               <div className="border-b">
                 <div className="grid grid-cols-5 divide-x border-b">
                   <button
@@ -1012,7 +656,6 @@ export default function TripDetail({ params: routeParams }) {
                   </div>
                 )}
 
-                {/* Replace Maps Tab with Gallery Tab */}
                 {activeTab === "gallery" && trip.images && trip.images.length > 0 && (
                   <div className="space-y-6">
                     <div className="flex items-center justify-between mb-4">
@@ -1027,10 +670,6 @@ export default function TripDetail({ params: routeParams }) {
                         <div
                           key={idx}
                           className="relative aspect-video rounded-lg overflow-hidden shadow-md hover:shadow-lg group cursor-pointer"
-                          onClick={() => {
-                            // Here you could add a lightbox effect if desired
-                            console.log(`Open lightbox for image ${idx + 1}`);
-                          }}
                         >
                           <Image
                             src={getImageUrl(image.image_path)}
@@ -1049,58 +688,6 @@ export default function TripDetail({ params: routeParams }) {
                     </div>
                   </div>
                 )}
-                
-                {activeTab === "maps" && (
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold mb-4">Peta Jalur</h3>
-
-                    {trip.map_url ? (
-                      <div className="overflow-hidden rounded-xl border border-gray-200">
-                        <iframe
-                          src={trip.map_url}
-                          width="100%"
-                          height="450"
-                          style={{ border: 0 }}
-                          allowFullScreen=""
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                          className="w-full"
-                        ></iframe>
-                      </div>
-                    ) : (
-                      <div className="text-center py-10">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-16 w-16 mx-auto text-gray-300 mb-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                          />
-                        </svg>
-                        <p className="text-gray-500">
-                          Peta jalur tidak tersedia
-                        </p>
-                      </div>
-                    )}
-
-                    {trip.mountain?.track_info && (
-                      <div className="mt-6 bg-gray-50 p-6 rounded-xl">
-                        <h4 className="text-lg font-semibold mb-3">
-                          Informasi Jalur
-                        </h4>
-                        <p className="text-gray-700 whitespace-pre-line">
-                          {trip.mountain.track_info}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -1108,48 +695,33 @@ export default function TripDetail({ params: routeParams }) {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="space-y-6">
-              {/* Chat Button for Desktop */}
+              {/* UPDATED: WhatsApp Contact Button for Desktop */}
               <div className="hidden lg:block">
-                <Link href={`/dashboard-user/trip-manage/${tripId}/chat`}>
-                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-xl shadow-md font-medium flex items-center justify-center gap-3 transition-colors">
-                    <FaComments className="text-xl" />
-                    <span>Chat dengan Guide</span>
-                    {unreadMessages > 0 && (
-                      <div className="bg-white text-blue-600 text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                        {unreadMessages > 9 ? "9+" : unreadMessages}
-                      </div>
-                    )}
+                {trip.whatsapp_group ? (
+                  <button
+                    onClick={() => {
+                      window.open(trip.whatsapp_group, "_blank");
+                    }}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl shadow-md font-medium flex items-center justify-center gap-3 transition-all hover:scale-105"
+                  >
+                    <FaWhatsapp className="text-xl" />
+                    <span>Gabung Grup WhatsApp</span>
                   </button>
-                </Link>
+                ) : (
+                  <div className="w-full bg-gray-100 text-gray-500 px-6 py-4 rounded-xl text-center">
+                    <span>Grup WhatsApp belum tersedia</span>
+                  </div>
+                )}
               </div>
 
               {/* Trip Info Card */}
               <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-24 space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">Kontak Trip</h3>
+                
                   <div className="space-y-4">
-                    <div className="p-4 bg-green-50 rounded-xl">
-                      <h4 className="font-medium text-gray-700 mb-2">
-                        Grup WhatsApp
-                      </h4>
-                      {trip.whatsapp_group ? (
-                        <a
-                          href={trip.whatsapp_group}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-green-600 hover:text-green-700 transition-colors"
-                        >
-                          <FaWhatsapp size={20} />
-                          <span>Gabung Grup Chat</span>
-                        </a>
-                      ) : (
-                        <p className="text-gray-500">
-                          Grup WhatsApp belum tersedia
-                        </p>
-                      )}
-                    </div>
+                   
 
-                    {/* Guide Information - Enhanced Version */}
+                    {/* Enhanced Guide Information */}
                     <div className="p-5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm">
                       <h4 className="font-medium text-gray-700 mb-4 flex items-center gap-2">
                         <svg
@@ -1167,7 +739,7 @@ export default function TripDetail({ params: routeParams }) {
                         <span>Informasi Guide</span>
                       </h4>
 
-                      <div className="flex items-center gap-4 mb-5 p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm hover:shadow transition-all duration-300">
+                      <div className="flex items-center gap-4 mb-5 p-3 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm">
                         <div className="relative group">
                           {trip.guide?.profile_photo ? (
                             <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-white shadow-md">
@@ -1176,7 +748,7 @@ export default function TripDetail({ params: routeParams }) {
                                 alt={trip.guide?.name || "Guide"}
                                 width={64}
                                 height={64}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                className="w-full h-full object-cover"
                                 unoptimized
                               />
                             </div>
@@ -1315,19 +887,7 @@ export default function TripDetail({ params: routeParams }) {
                     </Link>
                   </div>
 
-                  {/* Packing List */}
-                  <div className="p-4 bg-gray-50 rounded-xl">
-                    <h4 className="font-medium text-gray-700 mb-2">
-                      Perlengkapan Trip
-                    </h4>
-                    <Link
-                      href={`/dashboard-user/trip-manage/${tripId}/packing-list`}
-                      className="flex items-center gap-2 text-gray-600 hover:text-gray-700 transition-colors"
-                    >
-                      <FaClipboardList size={16} />
-                      <span>Lihat Packing List</span>
-                    </Link>
-                  </div>
+                 
 
                   {/* Emergency Contacts */}
                   {trip.emergency_contacts && (
@@ -1338,7 +898,7 @@ export default function TripDetail({ params: routeParams }) {
                           className="h-4 w-4 mr-1 text-red-500"
                           fill="none"
                           viewBox="0 0 24 24"
-                          stroke="currentColor</div>"
+                          stroke="currentColor"
                         >
                           <path
                             strokeLinecap="round"
